@@ -1,0 +1,93 @@
+body {
+  background: linear-gradient(
+      rgba(0, 0, 0, 0.1),
+      rgba(0, 0, 0, 0.2),
+      rgba(0, 0, 0, 0.4),
+      rgba(0, 0, 0, 0.9),
+      rgba(0, 0, 0, 1)),
+      url(http://www.allthingswhisky.com/wp-content/uploads/2010/08/Islay2-432.jpg);
+  filter: grayscale(50%);
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+/******************** NAVIGATION BAR ********************/
+.navbar {
+  border-radius: 0;
+  font-size: 25px;
+  font-family: 'Berkshire Swash', cursive;
+}
+
+body .navbar-nav  > .active > a {
+}
+
+.navbar-header .navbar-brand, .collapse .navbar-nav .active a, .collapse .navbar-nav li a {
+  color: #e4a82f;
+}
+
+.navbar-header .navbar-brand:hover, .collapse .navbar-nav .active a:hover, .collapse .navbar-nav li a:hover {
+  font-style: italic;
+  color: #e4a82f;
+}
+
+/*********************RECIPES********************/
+.recipes-all {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 150px 15%;
+}
+
+.recipes-one {
+  background: rgba(255,255,255,0.7);
+  border: 20px solid #222;
+  border-image: url('../images/wood_frame.png') 35;
+  height: 140px;
+  width: 60%;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.drink-img {
+  height: 100px;
+  width: 100px;
+}
+
+.drink-logo-div {
+  padding: 14px 20px;
+}
+
+.drink-logo {
+  height: 72px;
+  width: auto;
+}
+
+.drink-logo-filled {
+  display: none;
+  height: 72px;
+  width: auto;
+}
+
+
+/******************** FOOTER ********************/
+
+.navbar-fixed-bottom {
+  /*border-top: #fff;*/
+  background: rgba(0, 0, 0, 0.8);
+  border-color: #000;
+  color: #e4a82f;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar-fixed-bottom a {
+  color: #e4a82f;
+}
+
+.navbar-credits {
+  margin-bottom: 2px;
+  vertical-align: middle;
+}
