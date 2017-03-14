@@ -30,46 +30,6 @@ body .navbar-nav  > .active > a {
   color: #e4a82f;
 }
 
-/*********************RECIPES********************/
-.recipes-all {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 150px 15%;
-}
-
-.recipes-one {
-  background: rgba(255,255,255,0.7);
-  border: 20px solid #222;
-  border-image: url('../images/wood_frame.png') 35;
-  height: 140px;
-  width: 60%;
-  margin-bottom: 20px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.drink-img {
-  height: 100px;
-  width: 100px;
-}
-
-.drink-logo-div {
-  padding: 14px 20px;
-}
-
-.drink-logo {
-  height: 72px;
-  width: auto;
-}
-
-.drink-logo-filled {
-  display: none;
-  height: 72px;
-  width: auto;
-}
-
-
 /******************** FOOTER ********************/
 
 .navbar-fixed-bottom {

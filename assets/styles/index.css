@@ -1,0 +1,74 @@
+.animated-menu {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+canvas {
+  text-align: center;
+  padding-left: 150px;
+}
+
+.recipes-all {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 40px 15% 150px 15%;
+}
+
+.recipes-one {
+  background: rgba(255,255,255,0.7);
+  border: 20px solid #222;
+  border-image: url('../images/wood_frame.png') 35;
+  height: 140px;
+  width: 600px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.drink-name-rating, .drink-img {
+  position: relative;
+  left: 0;
+}
+
+.div-name-rating {
+  width: 360px;
+  padding-left: 20px;
+}
+
+.drink-shaking {
+  position: relative;
+  right: 0;
+}
+
+.show-drink-empty {
+  background-image: url('../images/drink.png');
+  background-size: cover;
+  height: 80px;
+  width: 70px;
+}
+
+.show-shaker {
+  background-image: url('../images/shaker.png');
+  background-size: cover;
+  height: 80px;
+  width: 70px;
+}
+
+.show-drink-full {
+  background-image: url('../images/drink2.png');
+  background-size: cover;
+  height: 80px;
+  width: 70px;
+}
+
+.drink-img {
+  height: 100px;
+  width: 100px;
+}
+
+.drink-logo-div {
+  margin: 14px 20px;
+}
