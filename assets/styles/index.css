@@ -33,6 +33,15 @@ canvas {
   left: 0;
 }
 
+.drink-img-div {
+  border-right: solid #6E470B 10px;
+}
+
+.drink-img {
+  height: 100px;
+  width: 100px;
+}
+
 .div-name-rating {
   width: 360px;
   padding-left: 20px;
@@ -64,10 +73,6 @@ canvas {
   width: 70px;
 }
 
-.drink-img {
-  height: 100px;
-  width: 100px;
-}
 
 .drink-logo-div {
   margin: 14px 20px;

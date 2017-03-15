@@ -1,0 +1,31 @@
+.recipe-all {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 150px;
+}
+
+.recipe-info-left, .recipe-info-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.recipe-information, .recipe-ingredients, .recipe-directions {
+  background: rgba(255,255,255,0.7);
+  border: 20px solid #222;
+  border-image: url('../images/wood_frame.png') 35;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.recipe-ingredients, .recipe-directions {
+  height: 375px;
+  width: 300px;
+  margin: 0 0 50px 50px;
+}
+
+.recipe-information {
+  height: 800px;
+  width: 500px;
+  margin-bottom: 20px;
+}
