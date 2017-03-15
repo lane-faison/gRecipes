@@ -1,3 +1,10 @@
+*:focus {
+    outline: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
 body {
   background: linear-gradient(
       rgba(0, 0, 0, 0.1),
@@ -5,7 +12,7 @@ body {
       rgba(0, 0, 0, 0.4),
       rgba(0, 0, 0, 0.9),
       rgba(0, 0, 0, 1)),
-      url(http://www.allthingswhisky.com/wp-content/uploads/2010/08/Islay2-432.jpg);
+      url('../images/barrels-min.jpg');
   filter: grayscale(50%);
   background-size: cover;
   background-attachment: fixed;

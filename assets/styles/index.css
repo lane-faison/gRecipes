@@ -4,9 +4,12 @@
   width: 100%;
 }
 
-canvas {
-  text-align: center;
-  padding-left: 150px;
+.menu-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Berkshire Swash', cursive;
+  color: #e4a82f;
 }
 
 .recipes-all {
@@ -76,4 +79,10 @@ canvas {
 
 .drink-logo-div {
   margin: 14px 20px;
+}
+
+.btn-ingredient {
+  height: 30px;
+  width: 30px;
+  
 }

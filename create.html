@@ -18,7 +18,7 @@
     <script rel='text/javascript' src='./assets/scripts/ingredient.js'></script>
     <!-- CSS -->
     <link rel='stylesheet' type='text/css' href='./assets/styles/main.css'>
-    <link rel='stylesheet' type='text/css' href='./assets/styles/ingredient.css'>
+    <link rel='stylesheet' type='text/css' href='./assets/styles/create.css'>
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
 
     <!-- Fonts -->
@@ -49,9 +49,36 @@
       </div>
     </nav>
     <main>
-      <section class='drink-recipe'>
+      <form class='add-recipe-form'>
+        <div class="form-group">
+          <label for="InputUser">Your Name:</label>
+          <input type="text" class="form-control" id="InputUsername" placeholder="John Doe">
+        </div>
+        <div class="form-group">
+          <label for="InputUserURL">Your Picture URL:</label>
+          <input type="text" class="form-control" id="InputUserURL" placeholder="https://facebook.com/johndoe/profilepicture.jpg">
+        </div>
+        <div class="form-group">
+          <label for="InputDrinkTitle">Drink Title:</label>
+          <input type="text" class="form-control" id="InputDrinkTitle" placeholder="Rum &amp; Coke">
+        </div>
+        <div class="form-group">
+          <label for="InputDrinkDescription">Drink Description:</label>
+          <input type="text" class="form-control" id="InputDrinkDescription" placeholder="Rum &amp; Coke">
+        </div>
+        <div class="form-group">
+          <label for="InputDrinkURL">Drink Picture URL:</label>
+          <input type="text" class="form-control" id="InputDrinkURL" placeholder="https://google.com/rum&coke/picture.jpg">
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox"> I am at least 21 years of age
+          </label>
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+    </form>
 
-      </section>
+
     </main>
     <!-- FOOTER -->
     <nav class="navbar navbar-default navbar-fixed-bottom">

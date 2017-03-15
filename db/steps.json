@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "recipe_id": 1,
+    "body": "Shake",
+    "order": 1
+  },
+  {
+    "id": 2,
+    "recipe_id": 1,
+    "body": "Stir",
+    "order": 2
+  },
+  {
+    "id": 3,
+    "recipe_id": 1,
+    "body": "Ice it",
+    "order": 3
+  },
+  {
+    "id": 4,
+    "recipe_id": 1,
+    "body": "Insert Lime",
+    "order": 4
+  },
+  {
+    "id": 5,
+    "recipe_id": 1,
+    "body": "Mix",
+    "order": 5
+  },
+  {
+    "id": 6,
+    "recipe_id": 1,
+    "body": "Parse it",
+    "order": 6
+  },
+  {
+    "id": 7,
+    "recipe_id": 1,
+    "body": "Serve it",
+    "order": 7
+  },
+  {
+    "id": 8,
+    "recipe_id": 2,
+    "body": "Cut limes",
+    "order": 1
+  },
+  {
+    "id": 9,
+    "recipe_id": 2,
+    "body": "Squeeze limes",
+    "order": 2
+  },
+  {
+    "id": 10,
+    "recipe_id": 2,
+    "body": "Put ingredients in shaker",
+    "order": 3
+  },
+  {
+    "id": 11,
+    "recipe_id": 2,
+    "body": "Shake and Serve",
+    "order": 4
+  },
+  {
+    "id": 12,
+    "recipe_id": 3,
+    "body": "Cut lemons",
+    "order": 1
+  },
+  {
+    "id": 13,
+    "recipe_id": 3,
+    "body": "Squeeze lemons",
+    "order": 2
+  },
+  {
+    "id": 14,
+    "recipe_id": 3,
+    "body": "Ice into shaker",
+    "order": 3
+  },
+  {
+    "id": 15,
+    "recipe_id": 3,
+    "body": "Shake",
+    "order": 4
+  },
+  {
+    "id": 16,
+    "recipe_id": 3,
+    "body": "Serve",
+    "order": 5
+  },
+  {
+    "id": 17,
+    "recipe_id": 4,
+    "body": "Cut limes",
+    "order": 1
+  },
+  {
+    "id": 18,
+    "recipe_id": 4,
+    "body": "Shake",
+    "order": 2
+  },
+  {
+    "id": 19,
+    "recipe_id": 4,
+    "body": "Add more ice",
+    "order": 3
+  },
+  {
+    "id": 20,
+    "recipe_id": 4,
+    "body": "Serve",
+    "order": 4
+  }
+]

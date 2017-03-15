@@ -1,7 +1,8 @@
+
 .recipe-all {
   display: flex;
   justify-content: center;
-  margin-bottom: 150px;
+  margin-bottom: 50px;
 }
 
 .recipe-info-left, .recipe-info-right {
@@ -10,22 +11,125 @@
   justify-content: flex-start;
 }
 
-.recipe-information, .recipe-ingredients, .recipe-directions {
-  background: rgba(255,255,255,0.7);
+.recipe-information, .recipe-ingredients, .recipe-directions, .recipe-image-div, .recipe-user-div {
+  background: rgba(0,0,0,0.7);
+  color: #ddd;
   border: 20px solid #222;
   border-image: url('../images/wood_frame.png') 35;
   display: flex;
   justify-content: flex-start;
 }
 
+.recipe-information p, .recipe-ingredients p, .recipe-directions p {
+  font-family: 'Noto Serif', serif;
+  font-size: 16px;
+}
+
 .recipe-ingredients, .recipe-directions {
-  height: 375px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: 300px;
   width: 300px;
   margin: 0 0 50px 50px;
+  padding: 10px 20px;
 }
 
 .recipe-information {
-  height: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-height: 375px;
   width: 500px;
+  margin-bottom: 50px;
+  padding: 10px 20px;
+  text-align: justify;
+}
+
+.recipe-info-bottom {
+  display: flex;
+  justify-content: space-between;
+}
+
+.recipe-image-div, .recipe-user-div {
+  background-image: url('http://www.hanson-plywood.co.uk/uploads/images/inline/AB.jpg');
+  display: flex;
+  justify-content: center;
+  height: 225px;
+  width: 225px;
   margin-bottom: 20px;
+}
+
+.recipe-image, .recipe-user {
+  height: 185px;
+  width: auto;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+h1, h2 {
+  font-family: 'Berkshire Swash', cursive;
+  color: #e4a82f;
+  text-align: center;
+  margin-top: 10px;
+}
+
+h4 {
+  font-family: 'Berkshire Swash', cursive;
+  color: #ddd;
+  margin-top: 10px;
+}
+
+.each-ingredient {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.btn-ingredient {
+  background: rgba(255,255,255,0.2);
+  height: 30px;
+  width: 30px;
+  border-radius: 15px;
+  padding: 4px 0 4px 2px;
+  margin-right: 20px;
+  border: 2px solid #000;
+}
+
+.btn-ingredient:hover {
+  border: 2px solid #2f7500;
+}
+
+.gotIt {
+  background: rgba(47, 117, 0, 0.8);
+  border: 2px solid #2f7500;
+}
+
+.glyphicon-ok {
+  display: none;
+}
+
+.by-username {
+  margin-bottom: 20px;
+}
+
+.recipe-reviews {
+  background: rgba(0,0,0,0.7);
+  color: #ddd;
+  border: 20px solid #222;
+  border-image: url('../images/wood_frame.png') 35;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 800px;
+  margin-bottom: 150px;
+  margin-left: 15%;
+}
+
+.each-rating {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
 }

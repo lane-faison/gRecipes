@@ -1,0 +1,26 @@
+{
+  "name": "grecipes",
+  "version": "1.0.0",
+  "description": "",
+  "main": "expressServer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lanefaison2/gRecipes.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lanefaison2/gRecipes/issues"
+  },
+  "homepage": "https://github.com/lanefaison2/gRecipes#readme",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "cors": "^2.8.1",
+    "express": "^4.15.2",
+    "fs": "0.0.1-security",
+    "nodemon": "^1.11.0"
+  }
+}
