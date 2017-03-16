@@ -11,19 +11,19 @@ $(document).ready(function () {
   $.get(`${server}/recipes/${recipeID}`, function (data) {
     console.log('data:')
     console.log(data)
-    var userID = data.user_id
+    var userID = data[0].user_id
 
     $('.recipe-main').append(
       `<section class='recipe-all'>
         <div class='recipe-info-left'>
           <div class='recipe-information'>
-          <h1>${data.name}</h1>
+          <h1>${data[0].name}</h1>
           <div class='rating-div'></div>
-          <p class='drink-description'>${data.description}</p>
+          <p class='drink-description'>${data[0].description}</p>
           </div>
           <div class='recipe-info-bottom'>
             <div class='recipe-image-div'>
-              <img class='recipe-image' src='${data.image}'>
+              <img class='recipe-image' src='${data[0].image}'>
             </div>
             <div class='recipe-user-div'>
             </div>
