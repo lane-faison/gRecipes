@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-  var server = 'http://blooming-reaches-89522.herokuapp.com/grecipes'
+  var server = 'https://blooming-reaches-89522.herokuapp.com/grecipes'
 
   $.get(`${server}/recipes`, function (data) {
     data.forEach(function (currentValue, i, data) {

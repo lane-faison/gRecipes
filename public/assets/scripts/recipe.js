@@ -3,7 +3,7 @@ var count = 0;
 
 $(document).ready(function () {
 
-  var server = 'http://blooming-reaches-89522.herokuapp.com/grecipes'
+  var server = 'https://blooming-reaches-89522.herokuapp.com/grecipes'
 
   recipeID = getUrlParameter('id')
 
