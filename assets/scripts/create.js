@@ -1,6 +1,3 @@
-$(document).ready(function () {
-
-})
 
 // Adding and Removing Ingredients from List
 var ingredientArray = []
@@ -45,6 +42,17 @@ $(document).on('click', '.remove-step', function () {
 })
 
 $(document).on('click', '.btn-add-drink', function (event) {
+
+  var newDrink = {
+    username: $('#InputUsername').val(),
+    avatar: $('#InputUserURL').val(),
+    title: $('#InputDrinkTitle').val(),
+    description: $('#InputDrinkDescription').val(),
+    image: $('#InputDrinkURL').val(),
+    ingredients: ingredientArray,
+    steps: stepArray
+  }
+
   if ($.trim($('#InputUsername').val()) === "" || $.trim($('#InputUserURL').val()) === "" || $.trim($('#InputDrinkTitle').val()) === "" || $.trim($('#InputDrinkDescription').val()) === "" || $.trim($('#InputDrinkURL').val()) === "" || !ingredientArray.length || !stepArray.length) {
     event.preventDefault()
     alert('Please fill out the entire drink form in order for it to be added.')
@@ -57,15 +65,13 @@ $(document).on('click', '.btn-add-drink', function (event) {
   }
   else {
     event.preventDefault()
-    var newDrink = {
-      username: $('#InputUsername').val(),
-      avatar: $('#InputUserURL').val(),
-      title: $('#InputDrinkTitle').val(),
-      description: $('#InputDrinkDescription').val(),
-      image: $('#InputDrinkURL').val(),
-      ingredients: ingredientArray,
-      steps: stepArray
-    }
+    $.post('/users/', newDrink, (result) => {
+      res.json(result)
+    })
+
+
+
+
     console.log(newDrink)
   }
 })
