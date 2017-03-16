@@ -1,3 +1,4 @@
+var server = 'http://localhost:8000/'
 
 // Adding and Removing Ingredients from List
 var ingredientArray = []
@@ -20,6 +21,7 @@ $(document).on('click', '.remove-ingredient', function () {
   }
 })
 
+
 // Adding and Removing Steps from List
 var stepArray = []
 
@@ -41,16 +43,19 @@ $(document).on('click', '.remove-step', function () {
   }
 })
 
+
+// Submitting a new drink recipe
 $(document).on('click', '.btn-add-drink', function (event) {
 
-  var newDrink = {
+  var newUser = {
     username: $('#InputUsername').val(),
-    avatar: $('#InputUserURL').val(),
+    avatar: $('#InputUserURL').val()
+  }
+
+  var newRecipe = {
     title: $('#InputDrinkTitle').val(),
     description: $('#InputDrinkDescription').val(),
     image: $('#InputDrinkURL').val(),
-    ingredients: ingredientArray,
-    steps: stepArray
   }
 
   if ($.trim($('#InputUsername').val()) === "" || $.trim($('#InputUserURL').val()) === "" || $.trim($('#InputDrinkTitle').val()) === "" || $.trim($('#InputDrinkDescription').val()) === "" || $.trim($('#InputDrinkURL').val()) === "" || !ingredientArray.length || !stepArray.length) {
@@ -65,13 +70,58 @@ $(document).on('click', '.btn-add-drink', function (event) {
   }
   else {
     event.preventDefault()
-    $.post('/users/', newDrink, (result) => {
-      res.json(result)
+    $.post(`${server}users/`, newUser)
+
+    // TODO: Make sure new user ID is returned after a USER POST
+    .then((userId) => {
+
+      // Adds userId to newRecipe before POST
+      newRecipe.user_id = userId
+
+      return $.post(`${server}recipes/`, newRecipe)
+
+      // TODO: Make sure new recipe ID is returned after a RECIPE POST
     })
+    .then((recipeId) => {
 
+      var ingPromises = []
+      var stepPromises =[]
 
+      for (var i = 0; i < ingredientArray.length; i++) {
 
+        ingPromises.push($.post(`${server}ingredients/`, ingredientArray[i]))
 
-    console.log(newDrink)
+        // TODO: Make sure ingredient ID is returned after ingredient POST
+      }
+      return Promise.all(ingPromises)
+        .then((ingredients) => {
+          var ingRecPromises = []
+          for (var i = 0; i < ingredients.length; i++) {
+
+            // Set up ingredient_id and recipe_id for the ingredient_recipe join table
+
+            var ingredientElement = {
+              ingredient_id: ingredients[i].id,
+              recipe_id: recipeId
+            }
+
+            ingRecPromises.push($.post(NEWROUTE-TO-ING_REC-JOIN, ingredientElement))
+
+          }
+          return Promise.all(ingRecPromises)
+        })
+        .then((result) => {
+          for (var i = 0; i < newSteps.length; i++) {
+
+            // TODO: Add recipe ID to each step
+
+            newSteps[i].recipe_id = recipeId
+
+            stepPromises.push($.post(`${server}steps/`, newSteps[i]))
+          }
+          return Promise.all(stepPromises)
+        })
+
+    })
   }
 })
