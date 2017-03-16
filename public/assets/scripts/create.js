@@ -78,7 +78,7 @@ $(document).on('click', '.btn-add-drink', function (event) {
     .then((userId) => {
 
       // Adds userId to newRecipe before POST
-      newRecipe.user_id = userId
+      newRecipe.user_id = userId[0]
 
       return $.post(`${server}/recipes/`, newRecipe)
 
@@ -89,7 +89,7 @@ $(document).on('click', '.btn-add-drink', function (event) {
       var ingPromises = []
       var stepPromises =[]
 
-      for (var i = 0; i < ingredientArray.length; i++) {
+      for (let i = 0; i < ingredientArray.length; i++) {
 
         ingPromises.push($.post(`${server}/ingredients/`, ingredientArray[i]))
 
@@ -97,27 +97,28 @@ $(document).on('click', '.btn-add-drink', function (event) {
       }
       return Promise.all(ingPromises)
         .then((ingredients) => {
+          console.log(ingredients);
           var ingRecPromises = []
-          for (var i = 0; i < ingredients.length; i++) {
+          for (let i = 0; i < ingredients.length; i++) {
 
             // Set up ingredient_id and recipe_id for the ingredient_recipe join table
 
             var ingredientElement = {
               ingredient_id: ingredients[i].id,
-              recipe_id: recipeId
+              recipe_id: recipeId[0]
             }
 
-            ingRecPromises.push($.post(NEWROUTE-TO-ING_REC-JOIN, ingredientElement))
+            ingRecPromises.push($.post(`${server}/joins/`, ingredientElement))
 
           }
           return Promise.all(ingRecPromises)
         })
         .then((result) => {
-          for (var i = 0; i < newSteps.length; i++) {
+          for (let i = 0; i < newSteps.length; i++) {
 
             // TODO: Add recipe ID to each step
 
-            newSteps[i].recipe_id = recipeId
+            newSteps[i].recipe_id = recipeId[0]
 
             stepPromises.push($.post(`${server}/steps/`, newSteps[i]))
           }

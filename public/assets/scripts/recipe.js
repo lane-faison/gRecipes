@@ -51,9 +51,10 @@ $(document).ready(function () {
 
     console.log('ingredients:')
     console.log(ingredients);
-    for (var i = 0; i < ingredients.length; i++) {
+    for (let i = 0; i < ingredients.length; i++) {
       if (ingredients[i].recipe_id == recipeID) {
         console.log(ingredients[i])
+        console.log(ingredients[i].name)
       $('.recipe-ingredients').append(`<div class='each-ingredient'><button type='button' class='btn-ingredient'><span class="glyphicon glyphicon-plus" aria-hidden="true"></span><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button><p>${ingredients[i].name}</p></div>`)
       }
     }
@@ -62,7 +63,7 @@ $(document).ready(function () {
   $.get(`${server}/steps`, function (steps) {
     console.log('steps:')
     console.log(steps)
-    for (var i = 0; i < steps.length; i++) {
+    for (let i = 0; i < steps.length; i++) {
       if (steps[i].recipe_id == recipeID) {
         console.log(steps[i])
         count++
@@ -107,12 +108,12 @@ $(document).ready(function () {
       return acc + val
     }, 0)
     var ratingAverage = Math.round(ratingSum / ratingArrayLength)
-    for (var i = 0; i < ratingAverage; i++) {
+    for (let i = 0; i < ratingAverage; i++) {
       $('.rating-div').append('<span class="glyphicon glyphicon-star" aria-hidden="true"></span>')
     }
     if (ratingAverage < 5) {
       var blankStars = 5 - ratingAverage
-      for (var i = 0; i < blankStars; i++) {
+      for (let i = 0; i < blankStars; i++) {
         $('.rating-div').append('<span class="glyphicon glyphicon-star empty-star" aria-hidden="true"></span>')
       }
     }
