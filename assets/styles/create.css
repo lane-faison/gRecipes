@@ -15,3 +15,53 @@ main {
   min-height: 700px;
   padding: 70px 50px;
 }
+
+.add-recipe-form div input {
+  background: #ddd;
+  color: #000;
+}
+
+.form-add-lines {
+  display: flex;
+  justify-content: flex-start;
+}
+
+#InputDrinkStep, #InputDrinkIngredient {
+  width: 300px;
+  margin-right: 20px;
+}
+
+.btn-ingredient, .btn-step, .remove-ingredient, .remove-step {
+  background: rgba(200,200,200,0.4);
+  height: 30px;
+  width: 30px;
+  border-radius: 15px;
+  padding: 4px 0 4px 2px;
+  margin-right: 20px;
+  border: 2px solid #000;
+}
+
+.btn-ingredient:hover, .btn-step:hover {
+  background: #2f7500;
+  border: 2px solid #2f7500;
+}
+
+.added-ingredients, .added-steps {
+  margin: 10px 20px;
+}
+
+.remove-ingredient:hover, .remove-step:hover {
+  background: rgba(255, 5, 5, 0.5);
+  border: 2px solid rgba(255, 5, 5, 0.8);
+}
+
+.new-ingredient, .new-step {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.new-ingredient p, .new-step p {
+  margin-bottom: 0;
+}

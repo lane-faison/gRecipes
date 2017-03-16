@@ -15,7 +15,7 @@
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <!-- JavaScript -->
-    <script rel='text/javascript' src='./assets/scripts/ingredient.js'></script>
+    <script rel='text/javascript' src='./assets/scripts/create.js'></script>
     <!-- CSS -->
     <link rel='stylesheet' type='text/css' href='./assets/styles/main.css'>
     <link rel='stylesheet' type='text/css' href='./assets/styles/create.css'>
@@ -52,30 +52,46 @@
       <form class='add-recipe-form'>
         <div class="form-group">
           <label for="InputUser">Your Name:</label>
-          <input type="text" class="form-control" id="InputUsername" placeholder="John Doe">
+          <input type="text" class="form-control" id="InputUsername" placeholder="ex. John Doe">
         </div>
         <div class="form-group">
           <label for="InputUserURL">Your Picture URL:</label>
-          <input type="text" class="form-control" id="InputUserURL" placeholder="https://facebook.com/johndoe/profilepicture.jpg">
+          <input type="text" class="form-control" id="InputUserURL" placeholder="ex. https://facebook.com/johndoe/profilepicture.jpg">
         </div>
         <div class="form-group">
           <label for="InputDrinkTitle">Drink Title:</label>
-          <input type="text" class="form-control" id="InputDrinkTitle" placeholder="Rum &amp; Coke">
+          <input type="text" class="form-control" id="InputDrinkTitle" placeholder="ex. Rum &amp; Coke">
         </div>
         <div class="form-group">
-          <label for="InputDrinkDescription">Drink Description:</label>
-          <input type="text" class="form-control" id="InputDrinkDescription" placeholder="Rum &amp; Coke">
+          <label for="InputDrinkDescription">Tell us about your creation!</label>
+          <input type="text" class="form-control" id="InputDrinkDescription">
         </div>
         <div class="form-group">
           <label for="InputDrinkURL">Drink Picture URL:</label>
-          <input type="text" class="form-control" id="InputDrinkURL" placeholder="https://google.com/rum&coke/picture.jpg">
+          <input type="text" class="form-control" id="InputDrinkURL" placeholder="ex. https://google.com/rum&coke/picture.jpg">
+        </div>
+        <div class="form-group">
+          <label for="InputDrinkIngredient">Ingredients (add one at a time):</label>
+          <div class='form-add-lines'>
+            <input type="text" class="form-control" id="InputDrinkIngredient" placeholder="ex. Salt">
+            <button type='button' class='btn-ingredient'><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+          </div>
+          <div class='added-ingredients'></div>
+        </div>
+        <div class="form-group">
+          <label for="InputDrinkIngredient">Steps (add one at a time):</label>
+          <div class='form-add-lines'>
+            <input type="text" class="form-control" id="InputDrinkStep" placeholder="ex. Add ice">
+            <button type='button' class='btn-step'><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+            </div>
+          <div class='added-steps'></div>
         </div>
         <div class="checkbox">
           <label>
-            <input type="checkbox"> I am at least 21 years of age
+            <input class='age-check' type="checkbox"> I am at least 21 years of age
           </label>
         </div>
-        <button type="submit" class="btn btn-default">Submit</button>
+        <button type="submit" class="btn-add-drink btn btn-default">Submit</button>
     </form>
 
 
