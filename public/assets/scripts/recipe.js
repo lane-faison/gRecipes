@@ -45,8 +45,10 @@ $(document).ready(function () {
   })
 
   $.get(`${server}/ingredients`, function (ingredient) {
-    for (var i = 0; i < 6; i++) {
+    for (var i = 0; i < ingredients.length; i++) {
+      if (ingredients[i].recipe_id == recipeID) {
       $('.recipe-ingredients').append(`<div class='each-ingredient'><button type='button' class='btn-ingredient'><span class="glyphicon glyphicon-plus" aria-hidden="true"></span><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button><p>${ingredient[i].name}</p></div>`)
+      }
     }
   })
 
