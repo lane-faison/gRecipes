@@ -1,4 +1,4 @@
-var server = 'http://localhost:8000/'
+var server = 'http://blooming-reaches-89522.herokuapp.com/grecipes'
 
 // Adding and Removing Ingredients from List
 var ingredientArray = []
