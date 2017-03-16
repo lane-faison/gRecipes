@@ -1,6 +1,6 @@
 var local = 'http://localhost:8000'
 var heroku = 'https://blooming-reaches-89522.herokuapp.com/grecipes'
-var server = local
+var server = heroku
 
 $(document).ready(function () {
 

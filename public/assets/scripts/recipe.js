@@ -2,7 +2,7 @@ var recipeID;
 var count = 0;
 var local = 'http://localhost:8000'
 var heroku = 'https://blooming-reaches-89522.herokuapp.com/grecipes'
-var server = local
+var server = heroku
 
 $(document).ready(function () {
 
@@ -79,7 +79,7 @@ $(document).ready(function () {
           console.log(result);
           console.log(i + 'iteration');
           console.log(reviews[i].user_id);
-          return $(`#${i}R`).append(`<h3>${result.name}</h3>`)
+          return $(`#${i}R`).append(`<h4>${result.name}</h4>`)
         })
 
         for (var j = 0; j < reviews[i].rating; j++) {
