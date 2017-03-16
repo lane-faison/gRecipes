@@ -83,12 +83,8 @@ $(document).ready(function () {
 
         $('.recipe-reviews').append(`<div class='each-rating'><div class='review-user' id='${i}R'></div><div class='each-rating-stars' id='${i}S'></div><p>${reviews[i].body}</p></div>`)
 
-        console.log(i)
 
         $.get(`${server}/users/${reviews[i].user_id}`, function (result) {
-          console.log(result);
-          console.log(i + 'iteration');
-          console.log(reviews[i].user_id);
           return $(`#${i}R`).append(`<h4>${result.name}</h4>`)
         })
 
