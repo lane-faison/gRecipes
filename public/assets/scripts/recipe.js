@@ -9,7 +9,8 @@ $(document).ready(function () {
   recipeID = getUrlParameter('id')
 
   $.get(`${server}/recipes/${recipeID}`, function (data) {
-
+    console.log('data:')
+    console.log(data)
     var userID = data.user_id
 
     $('.recipe-main').append(
@@ -39,22 +40,29 @@ $(document).ready(function () {
       </section>`
     )
     $.get(`${server}/users/${userID}`, function (user) {
+      console.log('user:')
+      console.log(user)
       $(`<h4 class='by-username'>Mixed by ${user.name}</h4>`).insertBefore('.drink-description')
       $('.recipe-user-div').append(`<img class='recipe-user' src='${user.avatar}'>`)
     })
   })
 
   $.get(`${server}/ingredients`, function (ingredients) {
+
+    console.log('ingredients:')
     for (var i = 0; i < ingredients.length; i++) {
       if (ingredients[i].recipe_id == recipeID) {
+        console.log(ingredients[i])
       $('.recipe-ingredients').append(`<div class='each-ingredient'><button type='button' class='btn-ingredient'><span class="glyphicon glyphicon-plus" aria-hidden="true"></span><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button><p>${ingredients[i].name}</p></div>`)
       }
     }
   })
 
   $.get(`${server}/steps`, function (steps) {
+    console.log('steps:')
     for (var i = 0; i < steps.length; i++) {
       if (steps[i].recipe_id == recipeID) {
+        console.log(steps[i])
         count++
         $('.recipe-directions').append(`<p>${count}. ${steps[i].body}`)
       }
@@ -64,13 +72,13 @@ $(document).ready(function () {
   })
 
   $.get(`${server}/reviews`, function (reviews) {
-    console.log(reviews)
+    console.log('reviews:')
     var ratingArray = []
 
     for (let i = 0; i < reviews.length; i++) {
 
       if (reviews[i].recipe_id == recipeID) {
-
+        console.log(reviews[i]);
         ratingArray.push(reviews[i].rating)
 
         $('.recipe-reviews').append(`<div class='each-rating'><div class='review-user' id='${i}R'></div><div class='each-rating-stars' id='${i}S'></div><p>${reviews[i].body}</p></div>`)
