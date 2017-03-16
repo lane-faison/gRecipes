@@ -21,6 +21,7 @@ $(document).ready(function () {
         <div class='recipe-info-left'>
           <div class='recipe-information'>
           <h1>${data.title}</h1>
+          <div class='rating-div'></div>
           <p class='drink-description'>${data.description}</p>
           </div>
           <div class='recipe-info-bottom'>
@@ -69,9 +70,30 @@ $(document).ready(function () {
 
   $.get(`${server}reviews`, function (reviews) {
     console.log(reviews);
+    var ratingArray = []
+
     for (var i = 0; i < reviews.length; i++) {
+
       if (reviews[i].recipe_id == recipeID) {
-        $('.recipe-reviews').append(`<div class='each-rating'><h4>Rating: ${reviews[i].rating}/5</h4><h3>${reviews[i].body}</h3></div>`)
+        ratingArray.push(reviews[i].rating)
+        $('.recipe-reviews').append(`<div class='each-rating'><div class='each-rating-stars'></div><h3>${reviews[i].body}</h3></div>`)
+        // for (var i = 0; i < reviews[i].rating; i++) {
+        //   $('.each-rating-stars').append('<span class="glyphicon glyphicon-star" aria-hidden="true"></span>')
+        // }
+      }
+    }
+    var ratingArrayLength = ratingArray.length
+    var ratingSum = ratingArray.reduce(function (acc, val) {
+      return acc + val
+    }, 0)
+    var ratingAverage = Math.round(ratingSum / ratingArrayLength)
+    for (var i = 0; i < ratingAverage; i++) {
+      $('.rating-div').append('<span class="glyphicon glyphicon-star" aria-hidden="true"></span>')
+    }
+    if (ratingAverage < 5) {
+      var blankStars = 5 - ratingAverage
+      for (var i = 0; i < blankStars; i++) {
+        $('.rating-div').append('<span class="glyphicon glyphicon-star empty-star" aria-hidden="true"></span>')
       }
     }
   })

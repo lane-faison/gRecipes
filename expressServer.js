@@ -86,10 +86,12 @@ server.get('/users/:id', (req,res) => {
   }
 })
 
-// CREATE
+
+
+
+// // CREATE
 // server.post('/ingredients/', (req,res) => {
 //   var newIngredient = {
-//     id: parseInt(req.body.id),
 //     name: req.body.name
 //   }
 //   ingredients.push(newIngredient)
