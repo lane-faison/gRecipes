@@ -42,8 +42,8 @@ $(document).ready(function () {
     $.get(`${server}/users/${userID}`, function (user) {
       console.log('user:')
       console.log(user)
-      $(`<h4 class='by-username'>Mixed by ${user.name}</h4>`).insertBefore('.drink-description')
-      $('.recipe-user-div').append(`<img class='recipe-user' src='${user.avatar}'>`)
+      $(`<h4 class='by-username'>Mixed by ${user[0].name}</h4>`).insertBefore('.drink-description')
+      $('.recipe-user-div').append(`<img class='recipe-user' src='${user[0].avatar}'>`)
     })
   })
 
