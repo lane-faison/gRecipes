@@ -50,6 +50,7 @@ $(document).ready(function () {
   $.get(`${server}/ingredients`, function (ingredients) {
 
     console.log('ingredients:')
+    console.log(ingredients);
     for (var i = 0; i < ingredients.length; i++) {
       if (ingredients[i].recipe_id == recipeID) {
         console.log(ingredients[i])
@@ -60,6 +61,7 @@ $(document).ready(function () {
 
   $.get(`${server}/steps`, function (steps) {
     console.log('steps:')
+    console.log(steps)
     for (var i = 0; i < steps.length; i++) {
       if (steps[i].recipe_id == recipeID) {
         console.log(steps[i])
@@ -73,6 +75,7 @@ $(document).ready(function () {
 
   $.get(`${server}/reviews`, function (reviews) {
     console.log('reviews:')
+    console.log(reviews)
     var ratingArray = []
 
     for (let i = 0; i < reviews.length; i++) {
