@@ -9,12 +9,7 @@ $(document).ready(function () {
 
   $.get(`${server}recipes/${recipeID}`, function (data) {
 
-    console.log(data);
-
     var userID = data.user_id
-
-    console.log('recipeID is ' + recipeID)
-    console.log('userID is ' + userID)
 
     $('.recipe-main').append(
       `<section class='recipe-all'>
@@ -43,7 +38,6 @@ $(document).ready(function () {
       </section>`
     )
     $.get(`${server}users/${userID}`, function (user) {
-      console.log(user);
       $(`<h4 class='by-username'>Mixed by ${user.name}</h4>`).insertBefore('.drink-description')
       $('.recipe-user-div').append(`<img class='recipe-user' src='${user.avatar}'>`)
     })
@@ -56,10 +50,8 @@ $(document).ready(function () {
   })
 
   $.get(`${server}steps`, function (steps) {
-    console.log('recipe steps:');
     for (var i = 0; i < steps.length; i++) {
       if (steps[i].recipe_id == recipeID) {
-        console.log(steps[i]);
         count++
         $('.recipe-directions').append(`<p>${count}. ${steps[i].body}`)
       }
@@ -69,17 +61,35 @@ $(document).ready(function () {
   })
 
   $.get(`${server}reviews`, function (reviews) {
-    console.log(reviews);
+    console.log(reviews)
     var ratingArray = []
 
-    for (var i = 0; i < reviews.length; i++) {
+    for (let i = 0; i < reviews.length; i++) {
 
       if (reviews[i].recipe_id == recipeID) {
+
         ratingArray.push(reviews[i].rating)
-        $('.recipe-reviews').append(`<div class='each-rating'><div class='each-rating-stars'></div><h3>${reviews[i].body}</h3></div>`)
-        // for (var i = 0; i < reviews[i].rating; i++) {
-        //   $('.each-rating-stars').append('<span class="glyphicon glyphicon-star" aria-hidden="true"></span>')
-        // }
+
+        $('.recipe-reviews').append(`<div class='each-rating'><div class='review-user' id='${i}R'></div><div class='each-rating-stars' id='${i}S'></div><p>${reviews[i].body}</p></div>`)
+
+        console.log(i)
+
+        $.get(`${server}users/${reviews[i].user_id}`, function (result) {
+          console.log(result);
+          console.log(i + 'iteration');
+          console.log(reviews[i].user_id);
+          return $(`#${i}R`).append(`<h3>${result.name}</h3>`)
+        })
+
+        for (var j = 0; j < reviews[i].rating; j++) {
+          $(`#${i}S`).append('<span class="glyphicon glyphicon-star" aria-hidden="true"></span>')
+        }
+
+        if (reviews[i].rating < 5) {
+          var blankStars = 5 - reviews[i].rating
+          for (var k = 0; k < blankStars; k++) {
+            $(`#${i}S`).append('<span class="glyphicon glyphicon-star empty-star" aria-hidden="true"></span>')          }
+        }
       }
     }
     var ratingArrayLength = ratingArray.length

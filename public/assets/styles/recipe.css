@@ -132,6 +132,8 @@ h4 {
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
+  border-bottom: 2px solid #ddd;
+  margin-bottom: 20px;
 }
 
 .glyphicon-star {
