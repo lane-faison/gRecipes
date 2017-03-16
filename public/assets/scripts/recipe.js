@@ -7,7 +7,7 @@ $(document).ready(function () {
 
   recipeID = getUrlParameter('id')
 
-  $.get(`${server}recipes/${recipeID}`, function (data) {
+  $.get(`${server}/recipes/${recipeID}`, function (data) {
 
     var userID = data.user_id
 
@@ -37,19 +37,19 @@ $(document).ready(function () {
         </div>
       </section>`
     )
-    $.get(`${server}users/${userID}`, function (user) {
+    $.get(`${server}/users/${userID}`, function (user) {
       $(`<h4 class='by-username'>Mixed by ${user.name}</h4>`).insertBefore('.drink-description')
       $('.recipe-user-div').append(`<img class='recipe-user' src='${user.avatar}'>`)
     })
   })
 
-  $.get(`${server}ingredients`, function (ingredient) {
+  $.get(`${server}/ingredients`, function (ingredient) {
     for (var i = 0; i < 6; i++) {
       $('.recipe-ingredients').append(`<div class='each-ingredient'><button type='button' class='btn-ingredient'><span class="glyphicon glyphicon-plus" aria-hidden="true"></span><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button><p>${ingredient[i].name}</p></div>`)
     }
   })
 
-  $.get(`${server}steps`, function (steps) {
+  $.get(`${server}/steps`, function (steps) {
     for (var i = 0; i < steps.length; i++) {
       if (steps[i].recipe_id == recipeID) {
         count++
@@ -60,7 +60,7 @@ $(document).ready(function () {
     $('.recipe-directions').append(`<p>${count + 1}. ENJOY!`)
   })
 
-  $.get(`${server}reviews`, function (reviews) {
+  $.get(`${server}/reviews`, function (reviews) {
     console.log(reviews)
     var ratingArray = []
 
@@ -74,7 +74,7 @@ $(document).ready(function () {
 
         console.log(i)
 
-        $.get(`${server}users/${reviews[i].user_id}`, function (result) {
+        $.get(`${server}/users/${reviews[i].user_id}`, function (result) {
           console.log(result);
           console.log(i + 'iteration');
           console.log(reviews[i].user_id);

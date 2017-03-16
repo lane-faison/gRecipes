@@ -70,7 +70,7 @@ $(document).on('click', '.btn-add-drink', function (event) {
   }
   else {
     event.preventDefault()
-    $.post(`${server}users/`, newUser)
+    $.post(`${server}/users/`, newUser)
 
     // TODO: Make sure new user ID is returned after a USER POST
     .then((userId) => {
@@ -78,7 +78,7 @@ $(document).on('click', '.btn-add-drink', function (event) {
       // Adds userId to newRecipe before POST
       newRecipe.user_id = userId
 
-      return $.post(`${server}recipes/`, newRecipe)
+      return $.post(`${server}/recipes/`, newRecipe)
 
       // TODO: Make sure new recipe ID is returned after a RECIPE POST
     })
@@ -89,7 +89,7 @@ $(document).on('click', '.btn-add-drink', function (event) {
 
       for (var i = 0; i < ingredientArray.length; i++) {
 
-        ingPromises.push($.post(`${server}ingredients/`, ingredientArray[i]))
+        ingPromises.push($.post(`${server}/ingredients/`, ingredientArray[i]))
 
         // TODO: Make sure ingredient ID is returned after ingredient POST
       }
@@ -117,7 +117,7 @@ $(document).on('click', '.btn-add-drink', function (event) {
 
             newSteps[i].recipe_id = recipeId
 
-            stepPromises.push($.post(`${server}steps/`, newSteps[i]))
+            stepPromises.push($.post(`${server}/steps/`, newSteps[i]))
           }
           return Promise.all(stepPromises)
         })

@@ -2,7 +2,7 @@ $(document).ready(function () {
 
   var server = 'http://blooming-reaches-89522.herokuapp.com/grecipes'
 
-  $.get(`${server}recipes`, function (data) {
+  $.get(`${server}/recipes`, function (data) {
     data.forEach(function (currentValue, i, data) {
       console.log(data[i]);
       $('.recipes-all').append(
@@ -22,7 +22,7 @@ $(document).ready(function () {
       )
     })
   })
-  $.get(`${server}reviews`, function (reviews) {
+  $.get(`${server}/reviews`, function (reviews) {
     console.log(reviews)
 
 
