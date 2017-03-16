@@ -55,7 +55,7 @@ $(document).on('click', '.btn-add-drink', function (event) {
   }
 
   var newRecipe = {
-    title: $('#InputDrinkTitle').val(),
+    name: $('#InputDrinkTitle').val(),
     description: $('#InputDrinkDescription').val(),
     image: $('#InputDrinkURL').val(),
   }

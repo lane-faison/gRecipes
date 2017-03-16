@@ -17,7 +17,7 @@ $(document).ready(function () {
       `<section class='recipe-all'>
         <div class='recipe-info-left'>
           <div class='recipe-information'>
-          <h1>${data.title}</h1>
+          <h1>${data.name}</h1>
           <div class='rating-div'></div>
           <p class='drink-description'>${data.description}</p>
           </div>

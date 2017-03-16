@@ -14,7 +14,7 @@ $(document).ready(function () {
             <img class='drink-img' src='${data[i].image}' alt='drink picture'>
           </div>
           <div class='div-name-rating'>
-            <h3 class='drink-name'>${data[i].title}</h3>
+            <h3 class='drink-name'>${data[i].name}</h3>
             <h4>Rating: /5</h4>
           </div>
           <div class='drink-shaking'>
