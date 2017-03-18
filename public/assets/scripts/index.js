@@ -1,8 +1,11 @@
+var local = 'http://localhost:8000'
+var heroku = 'https://blooming-reaches-89522.herokuapp.com/grecipes'
+var server = heroku
+
 $(document).ready(function () {
 
-  var server = 'http://localhost:8000/'
 
-  $.get(`${server}recipes`, function (data) {
+  $.get(`${server}/recipes`, function (data) {
     data.forEach(function (currentValue, i, data) {
       console.log(data[i]);
       $('.recipes-all').append(
@@ -11,7 +14,7 @@ $(document).ready(function () {
             <img class='drink-img' src='${data[i].image}' alt='drink picture'>
           </div>
           <div class='div-name-rating'>
-            <h3 class='drink-name'>${data[i].title}</h3>
+            <h3 class='drink-name'>${data[i].name}</h3>
             <h4>Rating: /5</h4>
           </div>
           <div class='drink-shaking'>
@@ -22,7 +25,7 @@ $(document).ready(function () {
       )
     })
   })
-  $.get(`${server}reviews`, function (reviews) {
+  $.get(`${server}/reviews`, function (reviews) {
     console.log(reviews)
 
 

@@ -1,27 +1,29 @@
 var recipeID;
 var count = 0;
+var local = 'http://localhost:8000'
+var heroku = 'https://blooming-reaches-89522.herokuapp.com/grecipes'
+var server = heroku
 
 $(document).ready(function () {
 
-  var server = 'http://localhost:8000/'
-
   recipeID = getUrlParameter('id')
 
-  $.get(`${server}recipes/${recipeID}`, function (data) {
-
-    var userID = data.user_id
+  $.get(`${server}/recipes/${recipeID}`, function (data) {
+    console.log('data:')
+    console.log(data)
+    var userID = data[0].user_id
 
     $('.recipe-main').append(
       `<section class='recipe-all'>
         <div class='recipe-info-left'>
           <div class='recipe-information'>
-          <h1>${data.title}</h1>
+          <h1>${data[0].name}</h1>
           <div class='rating-div'></div>
-          <p class='drink-description'>${data.description}</p>
+          <p class='drink-description'>${data[0].description}</p>
           </div>
           <div class='recipe-info-bottom'>
             <div class='recipe-image-div'>
-              <img class='recipe-image' src='${data.image}'>
+              <img class='recipe-image' src='${data[0].image}'>
             </div>
             <div class='recipe-user-div'>
             </div>
@@ -37,21 +39,33 @@ $(document).ready(function () {
         </div>
       </section>`
     )
-    $.get(`${server}users/${userID}`, function (user) {
-      $(`<h4 class='by-username'>Mixed by ${user.name}</h4>`).insertBefore('.drink-description')
-      $('.recipe-user-div').append(`<img class='recipe-user' src='${user.avatar}'>`)
+    $.get(`${server}/users/${userID}`, function (user) {
+      console.log('user:')
+      console.log(user)
+      $(`<h4 class='by-username'>Mixed by ${user[0].name}</h4>`).insertBefore('.drink-description')
+      $('.recipe-user-div').append(`<img class='recipe-user' src='${user[0].avatar}'>`)
     })
   })
 
-  $.get(`${server}ingredients`, function (ingredient) {
-    for (var i = 0; i < 6; i++) {
-      $('.recipe-ingredients').append(`<div class='each-ingredient'><button type='button' class='btn-ingredient'><span class="glyphicon glyphicon-plus" aria-hidden="true"></span><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button><p>${ingredient[i].name}</p></div>`)
+  $.get(`${server}/ingredients`, function (ingredients) {
+
+    console.log('ingredients:')
+    console.log(ingredients);
+    for (let i = 0; i < ingredients.length; i++) {
+      if (ingredients[i].recipe_id == recipeID) {
+        console.log(ingredients[i])
+        console.log(ingredients[i].name)
+      $('.recipe-ingredients').append(`<div class='each-ingredient'><button type='button' class='btn-ingredient'><span class="glyphicon glyphicon-plus" aria-hidden="true"></span><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button><p>${ingredients[i].name}</p></div>`)
+      }
     }
   })
 
-  $.get(`${server}steps`, function (steps) {
-    for (var i = 0; i < steps.length; i++) {
+  $.get(`${server}/steps`, function (steps) {
+    console.log('steps:')
+    console.log(steps)
+    for (let i = 0; i < steps.length; i++) {
       if (steps[i].recipe_id == recipeID) {
+        console.log(steps[i])
         count++
         $('.recipe-directions').append(`<p>${count}. ${steps[i].body}`)
       }
@@ -60,25 +74,22 @@ $(document).ready(function () {
     $('.recipe-directions').append(`<p>${count + 1}. ENJOY!`)
   })
 
-  $.get(`${server}reviews`, function (reviews) {
+  $.get(`${server}/reviews`, function (reviews) {
+    console.log('reviews:')
     console.log(reviews)
     var ratingArray = []
 
     for (let i = 0; i < reviews.length; i++) {
 
       if (reviews[i].recipe_id == recipeID) {
-
+        console.log(reviews[i]);
         ratingArray.push(reviews[i].rating)
 
         $('.recipe-reviews').append(`<div class='each-rating'><div class='review-user' id='${i}R'></div><div class='each-rating-stars' id='${i}S'></div><p>${reviews[i].body}</p></div>`)
 
-        console.log(i)
 
-        $.get(`${server}users/${reviews[i].user_id}`, function (result) {
-          console.log(result);
-          console.log(i + 'iteration');
-          console.log(reviews[i].user_id);
-          return $(`#${i}R`).append(`<h3>${result.name}</h3>`)
+        $.get(`${server}/users/${reviews[i].user_id}`, function (result) {
+          return $(`#${i}R`).append(`<h4>${result.name}</h4>`)
         })
 
         for (var j = 0; j < reviews[i].rating; j++) {
@@ -97,12 +108,12 @@ $(document).ready(function () {
       return acc + val
     }, 0)
     var ratingAverage = Math.round(ratingSum / ratingArrayLength)
-    for (var i = 0; i < ratingAverage; i++) {
+    for (let i = 0; i < ratingAverage; i++) {
       $('.rating-div').append('<span class="glyphicon glyphicon-star" aria-hidden="true"></span>')
     }
     if (ratingAverage < 5) {
       var blankStars = 5 - ratingAverage
-      for (var i = 0; i < blankStars; i++) {
+      for (let i = 0; i < blankStars; i++) {
         $('.rating-div').append('<span class="glyphicon glyphicon-star empty-star" aria-hidden="true"></span>')
       }
     }
