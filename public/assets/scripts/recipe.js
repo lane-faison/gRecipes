@@ -9,8 +9,8 @@ $(document).ready(function () {
   recipeID = getUrlParameter('id')
 
   $.get(`${server}/recipes/${recipeID}`, function (data) {
-    console.log('data:')
-    console.log(data)
+    // console.log('data:')
+    // console.log(data)
     var userID = data[0].user_id
 
     $('.recipe-main').append(
@@ -40,41 +40,54 @@ $(document).ready(function () {
       </section>`
     )
     $.get(`${server}/users/${userID}`, function (user) {
-      console.log('user:')
-      console.log(user)
+      // console.log('user:')
+      // console.log(user)
       $(`<h4 class='by-username'>Mixed by ${user[0].name}</h4>`).insertBefore('.drink-description')
       $('.recipe-user-div').append(`<img class='recipe-user' src='${user[0].avatar}'>`)
     })
   })
 
-  // $.get(`${server}/join`, function (data) {
-  //   var ingNeeded = []
-  //   for (var i = 0; i < data.length; i++) {
-  //     if(data[i].recipe_id == recipeID) {
-  //       ingNeeded.push(data[i].ingredient_id)
-  //     }
-  //   }
-  //   return ingNeeded
-  // }).then((ingNeeded) => {
+  $.get(`${server}/join`, function (data) {
+    var ingNeeded = []
+    for (var i = 0; i < data.length; i++) {
+      if(data[i].recipe_id == recipeID) {
+        ingNeeded.push(data[i].ingredient_id)
+      }
+    }
+    return ingNeeded
+  }).then(function (ingNeeded) {
+    console.log(ingNeeded);
+  })
+  // .then((ingNeeded) => {
+    // $.get(`${server}/ingredients`, function (data) {
+    //
+    //   for (var i = 0; i < ingNeeded.length; i++) {
+    //     for (var k = 0; k < data.length; i++) {
+    //       if (data[k].id == ingNeeded[i]) {
+    //         console.log(data[k].name)
+    //         $('.recipe-ingredients').append(`<div class='each-ingredient'><button type='button' class='btn-ingredient'><span class="glyphicon glyphicon-plus" aria-hidden="true"></span><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button><p>${data[i].name}</p></div>`)
+    //       }
+    //     }
+    //   }
+    // })
+  // })
   //
-  //   $.get(`${server}/ingredients`, function (data) {
+  // $.get(`${server}/ingredients`, function (data) {
   //
-  //     for (var i = 0; i < ingNeeded.length; i++) {
-  //       for (var k = 0; k < data.length; i++) {
-  //         if (data[k].id == ingNeeded[i]) {
-  //           console.log(data[k].name)
-  //           $('.recipe-ingredients').append(`<div class='each-ingredient'><button type='button' class='btn-ingredient'><span class="glyphicon glyphicon-plus" aria-hidden="true"></span><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button><p>${data[i].name}</p></div>`)
-  //         }
+  //   for (var i = 0; i < ingNeeded.length; i++) {
+  //     for (var k = 0; k < data.length; i++) {
+  //       if (data[k].id == ingNeeded[i]) {
+  //         console.log(data[k].name)
+  //         $('.recipe-ingredients').append(`<div class='each-ingredient'><button type='button' class='btn-ingredient'><span class="glyphicon glyphicon-plus" aria-hidden="true"></span><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button><p>${data[i].name}</p></div>`)
   //       }
   //     }
-  //   })
+  //   }
   // })
-
 
   // DRINK STEPS SECTION
   $.get(`${server}/steps`, function (steps) {
-    console.log('steps:')
-    console.log(steps)
+    // console.log('steps:')
+    // console.log(steps)
     for (let i = 0; i < steps.length; i++) {
       if (steps[i].recipe_id == recipeID) {
         count++
@@ -87,8 +100,8 @@ $(document).ready(function () {
 
   // DRINK REVIEW SECTION
   $.get(`${server}/reviews`, function (reviews) {
-    console.log('reviews:')
-    console.log(reviews)
+    // console.log('reviews:')
+    // console.log(reviews)
     var ratingArray = []
 
     for (let i = 0; i < reviews.length; i++) {
