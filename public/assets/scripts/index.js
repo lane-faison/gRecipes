@@ -1,5 +1,5 @@
 var local = 'http://localhost:8000'
-var heroku = 'https://g-drinks.herokuapp.com'
+var heroku = 'https://g-drinks.herokuapp.com/grecipes'
 var server = heroku
 
 $(document).ready(function () {
