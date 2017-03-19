@@ -1,11 +1,11 @@
 var local = 'http://localhost:8000'
 var heroku = 'https://g-drinks.herokuapp.com'
 var server = heroku
-// `${server}/recipes`
+
 $(document).ready(function () {
 
 
-  $.get('https://g-drinks.herokuapp.com', function (data) {
+  $.get(`${server}/recipes`, function (data) {
     data.forEach(function (currentValue, i, data) {
       console.log(data[i]);
       $('.recipes-all').append(
