@@ -5,7 +5,6 @@ var server = heroku
 $(document).ready(function () {
   $.get(`${server}/recipes`, function (data) {
     data.forEach(function (currentValue, i, data) {
-      console.log(data[i]);
       $('.recipes-all').append(
         `<div class='recipes-one'>
           <div class='drink-img-div'>

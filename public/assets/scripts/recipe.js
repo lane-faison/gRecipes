@@ -47,31 +47,29 @@ $(document).ready(function () {
     })
   })
 
-  $.get(`${server}/join`, function (data) {
-    var ingredientsNeeded = []
-    console.log('data length: ')
-    console.log(data.length)
-    for (var i = 0; i < data.length; i++) {
-      if(data[i].recipe_id === recipeID) {
-        ingredientsNeeded.push(data[i].ingredient_id)
-      }
-    }
-    console.log('needed ings: ');
-    console.log(ingredientsNeeded);
-  })
+  // $.get(`${server}/join`, function (data) {
+  //   var ingNeeded = []
+  //   for (var i = 0; i < data.length; i++) {
+  //     if(data[i].recipe_id == recipeID) {
+  //       ingNeeded.push(data[i].ingredient_id)
+  //     }
+  //   }
+  //   return ingNeeded
+  // }).then((ingNeeded) => {
+  //
+  //   $.get(`${server}/ingredients`, function (data) {
+  //
+  //     for (var i = 0; i < ingNeeded.length; i++) {
+  //       for (var k = 0; k < data.length; i++) {
+  //         if (data[k].id == ingNeeded[i]) {
+  //           console.log(data[k].name)
+  //           $('.recipe-ingredients').append(`<div class='each-ingredient'><button type='button' class='btn-ingredient'><span class="glyphicon glyphicon-plus" aria-hidden="true"></span><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button><p>${data[i].name}</p></div>`)
+  //         }
+  //       }
+  //     }
+  //   })
+  // })
 
-  $.get(`${server}/ingredients`, function (ingredients) {
-
-    console.log('ingredients:')
-    console.log(ingredients);
-    for (let i = 0; i < ingredients.length; i++) {
-      if (ingredients[i].recipe_id == recipeID) {
-        console.log(ingredients[i])
-        console.log(ingredients[i].name)
-      $('.recipe-ingredients').append(`<div class='each-ingredient'><button type='button' class='btn-ingredient'><span class="glyphicon glyphicon-plus" aria-hidden="true"></span><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button><p>${ingredients[i].name}</p></div>`)
-      }
-    }
-  })
 
   // DRINK STEPS SECTION
   $.get(`${server}/steps`, function (steps) {
@@ -146,6 +144,9 @@ $(document).on('click','.btn-ingredient', function () {
     $(this).removeClass('gotIt')
   }
 })
+
+
+
 
 // GRAB ID FROM URL FUNCTION
 function getUrlParameter(sParam) {
