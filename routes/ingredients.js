@@ -8,7 +8,7 @@ function Ingredient() {
 
 // http GET localhost:8000/ingredients
 router.get('/', (req, res) => {
-  Ingredient().select()
+  Ingredient().select().orderBy('name','asc')
   .then( result => {
     res.json(result)
   })

@@ -48,46 +48,26 @@ $(document).ready(function () {
   })
 
   $.get(`${server}/join`, function (data) {
-    var array = []
+    var ingNeeded = []
     for (var i = 0; i < data.length; i++) {
       if (data[i].recipe_id == recipeID) {
-        console.log(data[i].ingredient_id);
-        array.push(data[i].ingredient_id)
+        ingNeeded.push(data[i].ingredient_id)
       }
     }
-    return array
-  }).then(function (result) {
-    console.log('result')
-    console.log(result)
-    // for (var i = 0; i < ingNeeded.length; i++) {
-    //   if (ingNeeded[k].ingrede)
-    // }
+    return Promise.all(ingNeeded)
+    .then(function (result) {
+      $.get(`${server}/ingredients`, function (data) {
+        for (var i = 0; i < result.length; i++) {
+          for (var k = 0; k < data.length; k++) {
+            if (data[k].id == ingNeeded[i]) {
+              console.log(data[k].name)
+              $('.recipe-ingredients').append(`<div class='each-ingredient'><button type='button' class='btn-ingredient'><span class="glyphicon glyphicon-plus" aria-hidden="true"></span><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button><p>${data[k].name}</p></div>`)
+            }
+          }
+        }
+      })
+    })
   })
-  // .then((ingNeeded) => {
-    // $.get(`${server}/ingredients`, function (data) {
-    //
-    //   for (var i = 0; i < ingNeeded.length; i++) {
-    //     for (var k = 0; k < data.length; i++) {
-    //       if (data[k].id == ingNeeded[i]) {
-    //         console.log(data[k].name)
-    //         $('.recipe-ingredients').append(`<div class='each-ingredient'><button type='button' class='btn-ingredient'><span class="glyphicon glyphicon-plus" aria-hidden="true"></span><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button><p>${data[i].name}</p></div>`)
-    //       }
-    //     }
-    //   }
-    // })
-  // })
-  //
-  // $.get(`${server}/ingredients`, function (data) {
-  //
-  //   for (var i = 0; i < ingNeeded.length; i++) {
-  //     for (var k = 0; k < data.length; i++) {
-  //       if (data[k].id == ingNeeded[i]) {
-  //         console.log(data[k].name)
-  //         $('.recipe-ingredients').append(`<div class='each-ingredient'><button type='button' class='btn-ingredient'><span class="glyphicon glyphicon-plus" aria-hidden="true"></span><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button><p>${data[i].name}</p></div>`)
-  //       }
-  //     }
-  //   }
-  // })
 
   // DRINK STEPS SECTION
   $.get(`${server}/steps`, function (steps) {
@@ -105,8 +85,8 @@ $(document).ready(function () {
 
   // DRINK REVIEW SECTION
   $.get(`${server}/reviews`, function (reviews) {
-    // console.log('reviews:')
-    // console.log(reviews)
+    console.log('reviews:')
+    console.log(reviews)
     var ratingArray = []
 
     for (let i = 0; i < reviews.length; i++) {
@@ -118,7 +98,7 @@ $(document).ready(function () {
 
 
         $.get(`${server}/users/${reviews[i].user_id}`, function (result) {
-          return $(`#${i}R`).append(`<h4>${result.name}</h4>`)
+          return $(`#${i}R`).append(`<h4>${result[0].name}</h4>`)
         })
 
         for (var j = 0; j < reviews[i].rating; j++) {
@@ -162,9 +142,6 @@ $(document).on('click','.btn-ingredient', function () {
     $(this).removeClass('gotIt')
   }
 })
-
-
-
 
 // GRAB ID FROM URL FUNCTION
 function getUrlParameter(sParam) {
