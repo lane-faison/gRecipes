@@ -48,15 +48,20 @@ $(document).ready(function () {
   })
 
   $.get(`${server}/join`, function (data) {
-    var ingNeeded = []
+    var array = []
     for (var i = 0; i < data.length; i++) {
-      if(data[i].recipe_id == recipeID) {
-        ingNeeded.push(data[i].ingredient_id)
+      if (data[i].recipe_id == recipeID) {
+        console.log(data[i].ingredient_id);
+        array.push(data[i].ingredient_id)
       }
     }
-    return ingNeeded
-  }).then(function (ingNeeded) {
-    console.log(ingNeeded);
+    return array
+  }).then(function (result) {
+    console.log('result')
+    console.log(result)
+    // for (var i = 0; i < ingNeeded.length; i++) {
+    //   if (ingNeeded[k].ingrede)
+    // }
   })
   // .then((ingNeeded) => {
     // $.get(`${server}/ingredients`, function (data) {
