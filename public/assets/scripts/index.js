@@ -1,11 +1,11 @@
 var local = 'http://localhost:8000'
-var heroku = 'https://blooming-reaches-89522.herokuapp.com/grecipes'
+var heroku = 'https://g-drinks.herokuapp.com'
 var server = heroku
-
+// `${server}/recipes`
 $(document).ready(function () {
 
 
-  $.get(`${server}/recipes`, function (data) {
+  $.get('https://g-drinks.herokuapp.com', function (data) {
     data.forEach(function (currentValue, i, data) {
       console.log(data[i]);
       $('.recipes-all').append(
@@ -25,11 +25,12 @@ $(document).ready(function () {
       )
     })
   })
-  $.get(`${server}/reviews`, function (reviews) {
-    console.log(reviews)
-
-
-  })
+  // `${server}/reviews`
+  // $.get('https://g-drinks.herokuapp.com/', function (reviews) {
+  //   console.log(reviews)
+  //
+  //
+  // })
 })
 
 // Shaker animation

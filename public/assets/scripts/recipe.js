@@ -1,7 +1,7 @@
 var recipeID;
 var count = 0;
 var local = 'http://localhost:8000'
-var heroku = 'https://blooming-reaches-89522.herokuapp.com/grecipes'
+var heroku = 'https://g-drinks.herokuapp.com'
 var server = heroku
 
 $(document).ready(function () {
