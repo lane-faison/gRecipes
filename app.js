@@ -3,7 +3,7 @@ const recipes = require('./routes/recipes.js')
 const reviews = require('./routes/reviews.js')
 const steps = require('./routes/steps.js')
 const users = require('./routes/users.js')
-const ingredients_recipes = require('./routes/ingredients_recipes.js')
+const join = require('./routes/ingredients_recipes.js')
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
@@ -22,7 +22,7 @@ app.use('/recipes', recipes)
 app.use('/reviews', reviews)
 app.use('/steps', steps)
 app.use('/users', users)
-app.use('/ingredients_recipes', ingredients_recipes)
+app.use('/join', join)
 
 
 app.listen(PORT, () => {

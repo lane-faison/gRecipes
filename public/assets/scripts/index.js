@@ -3,8 +3,6 @@ var heroku = 'https://g-drinks.herokuapp.com'
 var server = heroku
 
 $(document).ready(function () {
-
-
   $.get(`${server}/recipes`, function (data) {
     data.forEach(function (currentValue, i, data) {
       console.log(data[i]);
@@ -15,7 +13,6 @@ $(document).ready(function () {
           </div>
           <div class='div-name-rating'>
             <h3 class='drink-name'>${data[i].name}</h3>
-            <h4>Rating: /5</h4>
           </div>
           <div class='drink-shaking'>
             <a href='recipe.html?id=${data[i].id}'><div class='drink-logo-div show-drink-empty'></div>
@@ -25,12 +22,6 @@ $(document).ready(function () {
       )
     })
   })
-  // `${server}/reviews`
-  // $.get('https://g-drinks.herokuapp.com/', function (reviews) {
-  //   console.log(reviews)
-  //
-  //
-  // })
 })
 
 // Shaker animation

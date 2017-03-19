@@ -47,6 +47,19 @@ $(document).ready(function () {
     })
   })
 
+  $.get(`${server}/join`, function (data) {
+    var ingredientsNeeded = []
+    console.log('data length: ')
+    console.log(data.length)
+    for (var i = 0; i < data.length; i++) {
+      if(data[i].recipe_id === recipeID) {
+        ingredientsNeeded.push(data[i].ingredient_id)
+      }
+    }
+    console.log('needed ings: ');
+    console.log(ingredientsNeeded);
+  })
+
   $.get(`${server}/ingredients`, function (ingredients) {
 
     console.log('ingredients:')
@@ -60,12 +73,12 @@ $(document).ready(function () {
     }
   })
 
+  // DRINK STEPS SECTION
   $.get(`${server}/steps`, function (steps) {
     console.log('steps:')
     console.log(steps)
     for (let i = 0; i < steps.length; i++) {
       if (steps[i].recipe_id == recipeID) {
-        console.log(steps[i])
         count++
         $('.recipe-directions').append(`<p>${count}. ${steps[i].body}`)
       }
@@ -74,6 +87,7 @@ $(document).ready(function () {
     $('.recipe-directions').append(`<p>${count + 1}. ENJOY!`)
   })
 
+  // DRINK REVIEW SECTION
   $.get(`${server}/reviews`, function (reviews) {
     console.log('reviews:')
     console.log(reviews)
@@ -82,7 +96,6 @@ $(document).ready(function () {
     for (let i = 0; i < reviews.length; i++) {
 
       if (reviews[i].recipe_id == recipeID) {
-        console.log(reviews[i]);
         ratingArray.push(reviews[i].rating)
 
         $('.recipe-reviews').append(`<div class='each-rating'><div class='review-user' id='${i}R'></div><div class='each-rating-stars' id='${i}S'></div><p>${reviews[i].body}</p></div>`)
@@ -120,6 +133,7 @@ $(document).ready(function () {
   })
 })
 
+// INTERACTIVE INGREDIENTS
 $(document).on('click','.btn-ingredient', function () {
   if (!$(this).hasClass('gotIt')) {
     $(this).find('.glyphicon-plus').hide()
@@ -133,11 +147,7 @@ $(document).on('click','.btn-ingredient', function () {
   }
 })
 
-
-
-
-
-
+// GRAB ID FROM URL FUNCTION
 function getUrlParameter(sParam) {
   const sPageURL = decodeURIComponent(window.location.search.substring(1))
   const sURLVariables = sPageURL.split('&')
