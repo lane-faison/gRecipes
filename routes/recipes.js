@@ -18,7 +18,7 @@ router.get('/', (req, res) => {
 })
 
 // http GET localhost:8000/recipes/:id
-router.get('recipe/:id', (req,res) => {
+router.get('/:id', (req,res) => {
   Recipe().select().where('id',req.params.id)
   .then ( result => {
     res.json(result)
