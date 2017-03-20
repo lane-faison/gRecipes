@@ -2,7 +2,7 @@ main {
   margin-bottom: 150px;
 }
 
-.ingredient-list h2 {
+.ingredient-list h2, .drink-list h2 {
   font-family: 'Berkshire Swash', cursive;
   color: #e4a82f;
 }
