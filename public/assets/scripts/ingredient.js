@@ -12,23 +12,25 @@ $(document).ready(function () {
 
 $(document).on('click','.ingredient-item', function (event) {
   $(event.target).addClass('chosen')
+  $('.available-drink').remove()
   var selectedID = $(event.target).attr('id')
-  console.log(selectedID)
   $.get(`${server}/join`, function (data) {
-    console.log(data);
     var recipesNeeded = []
     for (var i = 0; i < data.length; i++) {
       if (data[i].ingredient_id == selectedID) {
         recipesNeeded.push(data[i].recipe_id)
       }
     }
+    console.log('recipesNeeded')
+    console.log(recipesNeeded)
     return Promise.all(recipesNeeded)
     .then(function (result) {
+      console.log(result);
       $.get(`${server}/recipes`, function (data) {
-        for (var i = 0; i < data.length; i++) {
-          for (var k = 0; k < result.length; k++) {
-            if (array[i].name == result[k]) {
-              $('.drink-list').append(`<h4>${data[i].name}</h4>`)
+        for (var j = 0; j < result.length; j++) {
+          for (var k = 0; k < data.length; k++) {
+            if (data[k].id == result[j]) {
+              $('.drink-list').append(`<h4 class='available-drink'>${data[k].name}</h4>`)
             }
           }
         }

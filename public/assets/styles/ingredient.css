@@ -20,3 +20,7 @@ main {
 .chosen {
   color: red;
 }
+
+.available-drink {
+  color: #ddd;
+}
