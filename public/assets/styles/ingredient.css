@@ -12,15 +12,54 @@ main {
   color: #ddd;
 }
 
-.ingredient-list h4 {
+.ingredient-list h4, .drink-list h4 {
   font-family: 'Noto Serif', serif;
   color: #ddd;
 }
+.ingredient-item-div {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 10px;
 
+}
 .chosen {
   color: red;
 }
 
 .available-drink {
   color: #ddd;
+}
+
+.glyphicon-ok {
+  display: none;
+}
+
+.each-ingredient {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.btn-ingredient {
+  background: rgba(255,255,255,0.2);
+  height: 30px;
+  width: 30px;
+  border-radius: 15px;
+  padding: 4px 0 4px 2px;
+  margin-right: 20px;
+  border: 2px solid #000;
+}
+
+.btn-ingredient:hover {
+  border: 2px solid #2f7500;
+}
+
+.gotIt {
+  background: rgba(43, 255, 5, 0.8);
+  border: 2px solid #2f7500;
+}
+
+.glyphicon-ok {
+  display: none;
 }
