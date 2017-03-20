@@ -6,7 +6,16 @@ $(document).ready(function () {
   $.get(`${server}/ingredients`, function (data) {
     data.forEach(function (ingredient, i, data) {
       console.log(ingredient);
-      $('.ingredient-list').append(`<h4 id=${ingredient.id}>${ingredient.name}</h4>`)
+      $('.ingredient-list').append(`<h4 id=${ingredient.id} class='ingredient-item'>${ingredient.name}</h4>`)
     })
+  })
+})
+
+$(document).on('click','.ingredient-item', function (event) {
+  $(this).addClass('chosen')
+  var selectedID = $(this).attr('id')
+  console.log(selectedID)
+  $.get(`${server}/join`, function (data) {
+    console.log(data);
   })
 })

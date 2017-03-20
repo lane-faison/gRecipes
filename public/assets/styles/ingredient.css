@@ -1,0 +1,22 @@
+main {
+  margin-bottom: 150px;
+}
+
+.ingredient-list h2 {
+  font-family: 'Berkshire Swash', cursive;
+  color: #e4a82f;
+}
+
+.ingredient-list h3 {
+  font-family: 'Noto Serif', serif;
+  color: #ddd;
+}
+
+.ingredient-list h4 {
+  font-family: 'Noto Serif', serif;
+  color: #ddd;
+}
+
+.chosen {
+  color: red;
+}
