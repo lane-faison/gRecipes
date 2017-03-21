@@ -10,7 +10,7 @@ $(document).ready(function () {
       <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
       <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
       </button>
-      <h4 class='ingredient-item'>${ingredient.name}</h4></div>`)
+      <h3 class='ingredient-item'>${ingredient.name}</h3></div>`)
     })
   })
 })
@@ -21,9 +21,14 @@ $(document).on('click','.btn-ingredient', function () {
 
   if (!$(this).hasClass('gotIt')) {
     $('.btn-ingredient').removeClass('gotIt')
+    $('.btn-ingredient').find('.glyphicon-ok').hide()
+    $('.btn-ingredient').find('.glyphicon-plus').show()
     $(this).find('.glyphicon-plus').hide()
     $(this).find('.glyphicon-ok').show()
     $(this).addClass('gotIt')
+    $('html,body').animate({
+      scrollTop: $('.drink-list').offset().top
+    },500)
   }
 
   else {
@@ -51,7 +56,7 @@ $(document).on('click','.btn-ingredient', function () {
           for (var k = 0; k < data.length; k++) {
             if (data[k].id == result[j]) {
               console.log(data[k].id);
-              $('.drink-list').append(`<div class='available-item-div'><h4 class='available-drink'>${data[k].name}</h4></div>`)
+              $('.available-drinks').append(`<li class='available-drink'><a href='recipe.html?id=${data[k].id}'>${data[k].name}</a></li>`)
             }
           }
         }

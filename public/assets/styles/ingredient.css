@@ -2,7 +2,18 @@ main {
   margin-bottom: 150px;
 }
 
-.ingredient-list h2, .drink-list h2 {
+.ingredient-list, .drink-list {
+  background: rgba(0,0,0,0.7);
+  color: #ddd;
+  border: 20px solid #222;
+  border-image: url('../images/wood_frame.png') 35;
+}
+
+.drink-list {
+  padding-bottom: 100px;
+  margin-left: 25px;
+}
+.ingredient-list h2, .drink-list {
   font-family: 'Berkshire Swash', cursive;
   color: #e4a82f;
 }
@@ -10,11 +21,7 @@ main {
 .ingredient-list h3 {
   font-family: 'Noto Serif', serif;
   color: #ddd;
-}
-
-.ingredient-list h4, .drink-list h4 {
-  font-family: 'Noto Serif', serif;
-  color: #ddd;
+  margin-top: 0;
 }
 .ingredient-item-div {
   display: flex;
@@ -26,8 +33,13 @@ main {
   color: red;
 }
 
+.available-item-div {
+  display: flex;
+  justify-content: flex-start;
+}
 .available-drink {
   color: #ddd;
+  font-size: 30px;
 }
 
 .glyphicon-ok {
