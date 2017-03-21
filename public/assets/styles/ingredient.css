@@ -7,10 +7,10 @@ main {
   color: #ddd;
   border: 20px solid #222;
   border-image: url('../images/wood_frame.png') 35;
+  padding-bottom: 100px;
 }
 
 .drink-list {
-  padding-bottom: 100px;
   margin-left: 25px;
 }
 .ingredient-list h2, .drink-list {
@@ -27,10 +27,10 @@ main {
   display: flex;
   justify-content: flex-start;
   margin-bottom: 10px;
-
 }
-.chosen {
-  color: red;
+
+.ingredient-item {
+  padding-top: 2px;
 }
 
 .available-item-div {

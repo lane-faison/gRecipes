@@ -1,6 +1,6 @@
 var local = 'http://localhost:8000'
 var heroku = 'https://g-drinks.herokuapp.com'
-var server = heroku
+var server = local
 
 // Adding and Removing Ingredients from List
 var ingredientArray = []
@@ -47,7 +47,7 @@ $(document).on('click', '.remove-step', function () {
 
 
 // Submitting a new drink recipe
-$(document).on('click', '.btn-add-drink', function (event) {
+$(document).on('click','.btn-add-drink', function (event) {
   var newUser = {
     username: $('#InputUsername').val(),
     avatar: $('#InputUserURL').val()
@@ -71,15 +71,16 @@ $(document).on('click', '.btn-add-drink', function (event) {
   }
   else {
     event.preventDefault()
-    $.post(`${server}/users/`, newUser)
-    // TODO: Make sure new user ID is returned after a USER POST
+    $.post(`${server}/users`, newUser)
+    // TODO: Make sure new user ID is returned after a USER POST, HOW?????
     .then((userId) => {
+      console.log(userId);
       // Adds userId to newRecipe before POST
       newRecipe.user_id = userId[0]
 
       return $.post(`${server}/recipes/`, newRecipe)
 
-      // TODO: Make sure new recipe ID is returned after a RECIPE POST
+      // TODO: Make sure new recipe ID is returned after a RECIPE POST, HOW????
     })
     .then((recipeId) => {
       var ingPromises = []

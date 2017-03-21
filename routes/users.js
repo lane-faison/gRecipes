@@ -28,4 +28,52 @@ router.get('/:id', (req,res) => {
   })
 })
 
+// http POST localhost:8000/users name='' avatar=''
+router.post('/', (req,res) => {
+  User().where('name',req.body.username).select()
+  .then ( result => {
+    console.log(result)
+    if(result.length === 0) {
+      console.log('User does not exist...creating!');
+      return User().insert({
+        name: req.body.username,
+        avatar: req.body.avatar
+      })
+      .then( (result) => {
+        res.json(result)
+      })
+    }
+    else {
+      console.log('User already exists!')
+      res.status(404)
+    }
+  })
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 module.exports = router

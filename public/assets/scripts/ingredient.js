@@ -37,10 +37,7 @@ $(document).on('click','.btn-ingredient', function () {
     $(this).removeClass('gotIt')
   }
 
-  // TODO: REMOVE ACTUAL CHECK AFTER A DIFFERENT CLICK. CURRENTLY THE COLORS CHANGE PROPERLY BUT THE CHECK GLYPHICON REMAINS.
-
   var selectedID = $(this).attr('id')
-  console.log(selectedID)
 
   $.get(`${server}/join`, function (data) {
     var recipesNeeded = []
@@ -55,7 +52,6 @@ $(document).on('click','.btn-ingredient', function () {
         for (var j = 0; j < result.length; j++) {
           for (var k = 0; k < data.length; k++) {
             if (data[k].id == result[j]) {
-              console.log(data[k].id);
               $('.available-drinks').append(`<li class='available-drink'><a href='recipe.html?id=${data[k].id}'>${data[k].name}</a></li>`)
             }
           }

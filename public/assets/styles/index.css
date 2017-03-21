@@ -31,6 +31,9 @@
   justify-content: flex-start;
 }
 
+.drink-name {
+  font-family: 'Berkshire Swash', cursive;
+}
 .drink-name-rating, .drink-img {
   position: relative;
   left: 0;
@@ -86,5 +89,4 @@
 .btn-ingredient {
   height: 30px;
   width: 30px;
-
 }

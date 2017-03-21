@@ -49,17 +49,38 @@
       </div>
     </nav>
     <main class='recipe-main'>
-
     </main>
     <article class='recipe-reviews'>
-      <h2>Reviews</h2>
-
+      <div class='review-title'>
+        <h2>Reviews</h2>
+        <button type='button' class='add-review'><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+      </div>
+      <form class='review-form'>
+        <div class="form-group">
+          <label for="InputUser">Your name:</label>
+          <input type="text" class="form-control" id="InputUsername" placeholder="ex. John Doe">
+        </div>
+        <div class="form-group">
+          <label for="InputUserURL">Your picture URL:</label>
+          <input type="text" class="form-control" id="InputUserURL" placeholder="ex. https://facebook.com/johndoe/profilepicture.jpg">
+        </div>
+        <div class="form-group">
+          <label for="InputDrinkDescription">Tell us your thoughts!</label>
+          <input type="text" class="form-control" id="InputDrinkDescription">
+        </div>
+        <div class="form-group">
+          <label for="InputDrinkURL">Your rating:</label>
+          <input type="text" class="form-control" id="InputDrinkURL" placeholder="ex. https://google.com/rum&coke/picture.jpg">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
     </article>
+
     <!-- FOOTER -->
     <nav class="navbar navbar-default navbar-fixed-bottom">
       <div class="container-fluid">
         <div class="navbar-header">
-          <p class="navbar-credits">Site built by <a href='https://lanefaison.com'>Lane Faison</a> &amp; <a href='https://www.linkedin.com/in/paul-van-dyke-61aba1119/'>Paul Van Dyke</a> &copy; 2017</p>
+          <p class="navbar-credits">Site built by <a href='https://lanefaison.com'>Lane Faison</a> &copy; 2017</p>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         </div>

@@ -61,7 +61,7 @@ $(document).ready(function () {
           for (var k = 0; k < data.length; k++) {
             if (data[k].id == ingNeeded[i]) {
               console.log(data[k].name)
-              $('.recipe-ingredients').append(`<div class='each-ingredient'><button type='button' class='btn-ingredient'><span class="glyphicon glyphicon-plus" aria-hidden="true"></span><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button><p>${data[k].name}</p></div>`)
+              $('.recipe-ingredients').append(`<div class='each-ingredient'><button type='button' class='btn-ingredient'><span class="glyphicon glyphicon-plus" aria-hidden="true"></span><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button><p class='one-ingredient'>${data[k].name}</p></div>`)
             }
           }
         }
@@ -127,6 +127,11 @@ $(document).ready(function () {
       }
     }
   })
+})
+
+// ADD NEW REVIEW SECTION
+$(document).on('click','.add-review', function () {
+  $('.review-form').show()
 })
 
 // INTERACTIVE INGREDIENTS
