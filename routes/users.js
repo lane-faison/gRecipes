@@ -38,14 +38,16 @@ router.post('/', (req,res) => {
       return User().insert({
         name: req.body.username,
         avatar: req.body.avatar
-      })
+      },'id')
       .then( (result) => {
         res.json(result)
       })
     }
     else {
-      console.log('User already exists!')
-      res.status(404)
+      console.log('User found! Retrieving information...');
+      // Properly returns the user's pre-existing user ID
+      var idArray =[result[0].id]
+      res.json(idArray)
     }
   })
 })

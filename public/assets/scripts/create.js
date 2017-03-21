@@ -71,12 +71,14 @@ $(document).on('click','.btn-add-drink', function (event) {
   }
   else {
     event.preventDefault()
-    $.post(`${server}/users`, newUser)
+    return $.post(`${server}/users`, newUser)
     // TODO: Make sure new user ID is returned after a USER POST, HOW?????
-    .then((userId) => {
-      console.log(userId);
-      // Adds userId to newRecipe before POST
-      newRecipe.user_id = userId[0]
+    .then((result) => {
+      // result[0] properly returns the new userID for new users as well as previous userIDs if it already exists
+      console.log('Users new or old ID');
+      console.log(result[0]);
+      // Adds result[0] to newRecipe before POST
+      newRecipe.user_id = result[0]
 
       return $.post(`${server}/recipes/`, newRecipe)
 
