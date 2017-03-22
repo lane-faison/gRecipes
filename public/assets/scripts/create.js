@@ -6,11 +6,13 @@ var server = local
 var ingredientArray = []
 
 $(document).on('click', '.btn-ingredient', function () {
-  ingredientArray.unshift($('#InputDrinkIngredient').val())
+  var ingObj = {}
+  ingObj.name = $('#InputDrinkIngredient').val()
+  ingredientArray.unshift(ingObj)
   $('#InputDrinkIngredient').val("")
   $('.new-ingredient').hide()
   for (var i = 0; i < ingredientArray.length; i++) {
-    $('.added-ingredients').append(`<div class='new-ingredient'><button type='button' class='remove-ingredient' value='${i}'><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button><p>${ingredientArray[i]}</p></div>`)
+    $('.added-ingredients').append(`<div class='new-ingredient'><button type='button' class='remove-ingredient' value='${i}'><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button><p>${ingredientArray[i].name}</p></div>`)
   }
 })
 
@@ -28,11 +30,13 @@ $(document).on('click', '.remove-ingredient', function () {
 var stepArray = []
 
 $(document).on('click', '.btn-step', function () {
-  stepArray.unshift($('#InputDrinkStep').val())
+  var stepObj = {}
+  stepObj.body = $('#InputDrinkStep').val()
+  stepArray.unshift(stepObj)
   $('#InputDrinkStep').val("")
   $('.new-step').hide()
   for (var i = 0; i < stepArray.length; i++) {
-    $('.added-steps').append(`<div class='new-step'><button type='button' class='remove-step' value='${i}'><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button><p>${stepArray[i]}</p></div>`)
+    $('.added-steps').append(`<div class='new-step'><button type='button' class='remove-step' value='${i}'><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button><p>${stepArray[i].body}</p></div>`)
   }
 })
 
@@ -72,56 +76,38 @@ $(document).on('click','.btn-add-drink', function (event) {
   else {
     event.preventDefault()
     return $.post(`${server}/users`, newUser)
-    // TODO: Make sure new user ID is returned after a USER POST, HOW?????
     .then((result) => {
-      // result[0] properly returns the new userID for new users as well as previous userIDs if it already exists
-      console.log('Users new or old ID');
-      console.log(result[0]);
-      // Adds result[0] to newRecipe before POST
       newRecipe.user_id = result[0]
-
-      return $.post(`${server}/recipes/`, newRecipe)
-
-      // TODO: Make sure new recipe ID is returned after a RECIPE POST, HOW????
+      return $.post(`${server}/recipes`, newRecipe)
     })
     .then((recipeId) => {
+      // recipeId is properly returned as an integer
       var ingPromises = []
       var stepPromises =[]
-
-      for (let i = 0; i < ingredientArray.length; i++) {
-
-        ingPromises.push($.post(`${server}/ingredients/`, ingredientArray[i]))
-        // TODO: Make sure ingredient ID is returned after ingredient POST
+      for (let j = 0; j < ingredientArray.length; j++) {
+        ingPromises.push( $.post(`${server}/ingredients`, ingredientArray[j]) )
       }
       return Promise.all(ingPromises)
-        .then((ingredients) => {
+        .then( ingredients => {
           var ingRecPromises = []
-          for (let i = 0; i < ingredients.length; i++) {
-
-            // Set up ingredient_id and recipe_id for the ingredient_recipe join table
-
+          for (let k = 0; k < ingredients.length; k++) {
             var ingredientElement = {
-              ingredient_id: ingredients[i].id,
-              recipe_id: recipeId[0]
+              ingredient_id: ingredients[k],
+              recipe_id: recipeId
             }
-
-            ingRecPromises.push($.post(`${server}/joins/`, ingredientElement))
-
+            ingRecPromises.push($.post(`${server}/join`, ingredientElement))
           }
           return Promise.all(ingRecPromises)
         })
-        .then((result) => {
-          for (let i = 0; i < newSteps.length; i++) {
-
-            // TODO: Add recipe ID to each step
-
-            newSteps[i].recipe_id = recipeId[0]
-
-            stepPromises.push($.post(`${server}/steps/`, newSteps[i]))
+        .then( result => {
+          for (let m = 0; m < stepArray.length; m++) {
+            stepArray[m].order = m + 1
+            stepArray[m].recipe_id = recipeId
+            stepPromises.push($.post(`${server}/steps`, stepArray[m]))
           }
+          console.log('Entire recipe successfully added!');
           return Promise.all(stepPromises)
         })
-
     })
   }
 })

@@ -28,7 +28,22 @@ router.get('/:id', (req,res) => {
   })
 })
 
-
-
+// http POST localhost:8000/ingredients name=''
+router.post('/', (req,res) => {
+  Ingredient().where('name',req.body.name).select('id')
+  .then( result => {
+    if (result.length === 0) {
+      return Ingredient().insert({
+        name: req.body.name
+      },['id','name'])
+      .then( result => {
+        res.json(result[0].id)
+      })
+    }
+    else {
+      res.json(result[0].id)
+    }
+  })
+})
 
 module.exports = router

@@ -28,4 +28,17 @@ router.get('/:id', (req,res) => {
   })
 })
 
+// http POST localhost:8000/recipes name='' image='' description='' user_id=''
+router.post('/', (req,res) => {
+  return Recipe().insert({
+    name: req.body.name,
+    image: req.body.image,
+    description: req.body.description,
+    user_id: req.body.user_id
+  },['id','name','image','description','user_id'])
+  .then( result => {
+    res.json(result[0].id)
+  })
+})
+
 module.exports = router

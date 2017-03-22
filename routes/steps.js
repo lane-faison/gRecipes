@@ -26,4 +26,19 @@ router.get('/:id', (req,res) => {
     res.status(404)
   })
 })
+
+// http POST localhost:8000/steps body='' order=# recipe_id=#
+router.post('/', (req,res) => {
+  Step().insert({
+    body: req.body.body,
+    order: req.body.order,
+    recipe_id: req.body.recipe_id
+  })
+  .then( result => {
+    res.json(result)
+  })
+  .catch( result => {
+    res.status(404)
+  })
+})
 module.exports = router

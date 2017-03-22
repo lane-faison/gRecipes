@@ -2,7 +2,7 @@ var recipeID;
 var count = 0;
 var local = 'http://localhost:8000'
 var heroku = 'https://g-drinks.herokuapp.com'
-var server = heroku
+var server = local
 
 $(document).ready(function () {
 
@@ -40,8 +40,6 @@ $(document).ready(function () {
       </section>`
     )
     $.get(`${server}/users/${userID}`, function (user) {
-      // console.log('user:')
-      // console.log(user)
       $(`<h4 class='by-username'>Mixed by ${user[0].name}</h4>`).insertBefore('.drink-description')
       $('.recipe-user-div').append(`<img class='recipe-user' src='${user[0].avatar}'>`)
     })
