@@ -92,7 +92,7 @@ $(document).ready(function () {
       if (reviews[i].recipe_id == recipeID) {
         ratingArray.push(reviews[i].rating)
 
-        $('.recipe-reviews').append(`<div class='each-rating'><div class='review-user' id='${i}R'></div><div class='each-rating-stars' id='${i}S'></div><p>${reviews[i].body}</p></div>`)
+        $(`<div class='each-rating'><div class='review-user' id='${i}R'></div><div class='each-rating-stars' id='${i}S'></div><p>${reviews[i].body}</p></div>` ).insertBefore($('.review-form'))
 
 
         $.get(`${server}/users/${reviews[i].user_id}`, function (result) {
@@ -130,6 +130,24 @@ $(document).ready(function () {
 // ADD NEW REVIEW SECTION
 $(document).on('click','.add-review', function () {
   $('.review-form').show()
+  $('html body').animate({
+    scrollTop: $('.review-form').offset().top
+  },1000)
+})
+
+// SUBMIT NEW REVIEW
+$(document).on('click','.btn-submit-review', function () {
+
+  /// TODO: CREATE A USER POST ROUTE THAT RETURNS THE USER_ID SO THAT IT CAN BE USED IN THE POSTING OF THE REVIEW BELOW. THE POSTING OF THE USER SHOULD RETURN THE ID
+
+  var newReview = {
+    body: $('#ReviewBody'),
+    rating: $('#ReviewRating'),
+    user_id: TODO,
+    recipe_id: recipeID
+  }
+  console.log(newReview)
+  $.post(`${server}/reviews`, newReview)
 })
 
 // INTERACTIVE INGREDIENTS

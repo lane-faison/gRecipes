@@ -28,4 +28,16 @@ router.get('/:id', (req,res) => {
   })
 })
 
+// http POST localhost:8000/reviews body='' rating=# recipe_id=# user_id=#
+router.post('/', (req,res) => {
+  Review().insert({
+    body: req.body.body,
+    rating: req.body.rating,
+    recipe_id: req.body.recipe_id,
+    user_id: req.body.user_id
+  },['id','user_id','recipe_id','body','rating'])
+  .then( result => {
+    res.json(result)
+  })
+})
 module.exports = router
