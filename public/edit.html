@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Drinks Up!</title>
+    <!-- jQuery -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js'></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!-- JavaScript -->
+    <script rel='text/javascript' src='./assets/scripts/edit.js'></script>
+    <!-- CSS -->
+    <link rel='stylesheet' type='text/css' href='./assets/styles/main.css'>
+    <link rel='stylesheet' type='text/css' href='./assets/styles/edit.css'>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Berkshire+Swash|Noto+Serif" rel="stylesheet">
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Brand</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li><a href="index.html">All Recipes </a></li>
+            <li><a href="create.html">Add Your Recipe! </a></li>
+            <li><a href="ingredient.html">Find by Ingredient </a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Link</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <main class='recipe-main'>
+      <form class='add-recipe-form'>
+        <h2>What's your go-to drink?</h2>
+        <div class="form-group">
+          <label for="InputDrinkTitle">Drink Title:</label>
+          <input type="text" class="form-control" id="InputDrinkTitle" placeholder="ex. Rum &amp; Coke">
+        </div>
+        <div class="form-group">
+          <label for="InputDrinkDescription">Tell us about your creation!</label>
+          <textarea type="text" class="form-control" id="InputDrinkDescription"></textarea>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input class='age-check' type="checkbox"> By checking this box, I certify that I am at least 21 years of age
+          </label>
+        </div>
+        <button type="submit" class="btn-add-drink btn btn-default btn-submit">Submit</button>
+        <button type="button" class="btn btn-default btn-delete-recipe btn-delete btn-submit">Delete Recipe</button>
+      </form>
+    </main>
+
+    <!-- FOOTER -->
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <p class="navbar-credits">Site built by <a href='https://lanefaison.com'>Lane Faison</a> &copy; 2017</p>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        </div>
+      </div>
+    </nav>
+  </body>
+</html>

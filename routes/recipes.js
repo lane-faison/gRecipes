@@ -41,4 +41,15 @@ router.post('/', (req,res) => {
   })
 })
 
+// http DELETE localhost:8000/recipes/:id
+router.delete('/:id', (req,res) => {
+  Recipe().where('id',req.params.id).del()
+  .then( result => {
+    res.json(result)
+  })
+  .catch( result => {
+    res.status(404)
+  })
+})
+
 module.exports = router

@@ -9,8 +9,7 @@ $(document).ready(function () {
   recipeID = getUrlParameter('id')
 
   $.get(`${server}/recipes/${recipeID}`, function (data) {
-    // console.log('data:')
-    // console.log(data)
+
     var userID = data[0].user_id
 
     $('.recipe-main').append(
@@ -43,6 +42,7 @@ $(document).ready(function () {
       $(`<h4 class='by-username'>Mixed by ${user[0].name}</h4>`).insertBefore('.drink-description')
       $('.recipe-user-div').append(`<img class='recipe-user' src='${user[0].avatar}'>`)
     })
+    $('.option-btns').append(`<a href='edit.html?id=${recipeID}'><button type="button" class="btn btn-default btn-edit-recipe btn-edit">Edit Recipe</button></a>`)
   })
 
   $.get(`${server}/join`, function (data) {
@@ -127,6 +127,7 @@ $(document).ready(function () {
   })
 })
 
+
 // ADD NEW REVIEW SECTION
 $(document).on('click','.add-review', function () {
   $('.review-form').show()
@@ -137,17 +138,44 @@ $(document).on('click','.add-review', function () {
 
 // SUBMIT NEW REVIEW
 $(document).on('click','.btn-submit-review', function () {
+  event.preventDefault()
+  if ($.trim($('#ReviewUsername').val()) === "" || $.trim($('#ReviewBody').val()) === "" || $.trim($('#ReviewRating').val()) === "") {
+    alert('Please fill out the required fields!')
+  } else {
+    if ($.trim($('#ReviewUserURL').val()) === "") {
+      var userName = $('#ReviewUsername').val()
+      var userAvatar = 'http://crowsnestonline.co.uk/forum/images/misc/Unknown.png'
+    } else {
+      var userName = $('#ReviewUsername').val()
+      var userAvatar = $('#ReviewUserURL').val()
+    }
 
-  /// TODO: CREATE A USER POST ROUTE THAT RETURNS THE USER_ID SO THAT IT CAN BE USED IN THE POSTING OF THE REVIEW BELOW. THE POSTING OF THE USER SHOULD RETURN THE ID
+    var userInfo = {
+      username: userName,
+      avatar: userAvatar
+    }
 
-  var newReview = {
-    body: $('#ReviewBody'),
-    rating: $('#ReviewRating'),
-    user_id: TODO,
-    recipe_id: recipeID
+    /// TODO: CREATE A USER POST ROUTE THAT RETURNS THE USER_ID SO THAT IT CAN BE USED IN THE POSTING OF THE REVIEW BELOW. THE POSTING OF THE USER SHOULD RETURN THE ID
+
+    $.post(`${server}/users`, userInfo, function (result) {
+      console.log('made it through to the post');
+      console.log(result[0])
+      return result
+    }).then( result => {
+      var newReview = {
+        body: $('#ReviewBody').val(),
+        rating: $('#ReviewRating').val(),
+        user_id: result[0],
+        recipe_id: recipeID
+      }
+      console.log(newReview)
+      $.post(`${server}/reviews`, newReview, function (result) {
+        console.log(result)
+        console.log('success my dude!')
+        location.reload()
+      })
+    })
   }
-  console.log(newReview)
-  $.post(`${server}/reviews`, newReview)
 })
 
 // INTERACTIVE INGREDIENTS

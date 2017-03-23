@@ -37,6 +37,18 @@ body .navbar-nav  > .active > a {
   color: #e4a82f;
 }
 
+/******************** BUTTONS ********************/
+.btn-submit {
+  margin-top: 30px;
+  width: 100px;
+}
+
+.btn-submit:hover {
+  height: 33px;
+  padding: 3px 12px;
+  border: 5px solid #05ff65;
+}
+
 /******************** FOOTER ********************/
 
 .navbar-fixed-bottom {

@@ -57,24 +57,32 @@
       </div>
       <form class='review-form'>
         <div class="form-group">
-          <label for="InputUser">Your name:</label>
+          <label for="InputUser">Your name <span class='required'>*</span></label>
           <input type="text" class="form-control" id="ReviewUsername" placeholder="ex. John Doe">
         </div>
         <div class="form-group">
-          <label for="InputUserURL">Your picture URL:</label>
-          <input type="text" class="form-control" id="ReviewUserURL" placeholder="ex. https://facebook.com/johndoe/profilepicture.jpg">
+          <label for="InputUserURL">Your picture URL (optional)</label>
+          <input type="text" class="form-control" id="ReviewUserURL">
         </div>
         <div class="form-group">
-          <label for="InputDrinkDescription">Tell us your thoughts!</label>
-          <input type="text" class="form-control" id="ReviewBody">
+          <label for="InputDrinkDescription">Comment <span class='required'>*</span></label>
+          <textarea type="text" class="form-control" id="ReviewBody"></textarea>
         </div>
         <div class="form-group">
-          <label for="InputDrinkURL">Your rating:</label>
-          <input type="text" class="form-control" id="ReviewRating" placeholder="1 to 5">
+          <label for="InputDrinkURL">Stars <span class='required'>*</span></label><br>
+          <select id='ReviewRating'>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
         </div>
-        <button type="submit" class="btn btn-default btn-submit-review">Submit</button>
+        <button type="submit" class="btn btn-default btn-submit-review btn-submit">Submit</button>
       </form>
     </article>
+    <section class='option-btns'>
+    </section>
 
     <!-- FOOTER -->
     <nav class="navbar navbar-default navbar-fixed-bottom">
