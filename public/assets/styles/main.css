@@ -37,6 +37,18 @@ body .navbar-nav  > .active > a {
   color: #e4a82f;
 }
 
+.navbar-brand {
+  padding: 5px;
+}
+
+.navbar-header .navbar-brand:hover {
+  background: #000;
+}
+img.drinkLogo {
+  height: 40px;
+  width: auto;
+}
+
 /******************** BUTTONS ********************/
 .btn-submit {
   margin-top: 30px;

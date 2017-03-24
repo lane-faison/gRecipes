@@ -41,6 +41,17 @@ router.post('/', (req,res) => {
   })
 })
 
+// http PATCH localhost:8000/recipes/:id description='' name=''
+router.put('/:id', (req,res) => {
+  Recipe().where('id',req.params.id).update({
+    description: req.body.description,
+    name: req.body.name
+  },['name','description','image','id'])
+  .then( result => {
+    res.json(result)
+  })
+})
+
 // http DELETE localhost:8000/recipes/:id
 router.delete('/:id', (req,res) => {
   Recipe().where('id',req.params.id).del()

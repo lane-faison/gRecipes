@@ -11,9 +11,9 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  width: 700px;
+  width: 600px;
   min-height: 700px;
-  padding: 25px 50px 30px 50px;
+  padding: 25px 30px;
   margin-top: 100px;
   margin-bottom: 100px;
 }
@@ -34,7 +34,7 @@ main {
   min-height: 200px;
   width: 500px;
   max-width: 500px;
-  text-align: top;
+  text-align: justify;
 }
 
 .btn-delete, .btn-submit {

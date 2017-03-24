@@ -5,9 +5,39 @@ var server = local
 
 $(document).ready(function () {
   recipeID = getUrlParameter('id')
+  $.get(`${server}/recipes/${recipeID}`, data => {
+    $('#InputDrinkTitle').val(`${data[0].name}`)
+    $('#InputDrinkDescription').val(`${data[0].description}`)
+  })
 })
 
-// TODO: GET THE DRINK NAME AND DRINK DESCRIPTION AUTOMATICALLY APPENDED INTO THE INPUT BOXES. ALSO, TRY TO FIGURE OUT WHY THE CHECKBOX IS NOW CENTERED. CREATE EDIT ROUTE!
+$(document).on('click','.btn-submit', function () {
+  event.preventDefault()
+  var updatedRecipe = {
+    name: $('#InputDrinkTitle').val(),
+    description: $('#InputDrinkDescription').val()
+  }
+  if ($('.age-check').prop('checked') == false) {
+    event.preventDefault()
+    alert('You are not old enough to edit a drink recipe. Please come back when you are 21!')
+    return false
+  } else {
+    console.log(updatedRecipe);
+    $.ajax({
+      url: `${server}/recipes/${recipeID}`,
+      type: 'PUT',
+      data: updatedRecipe,
+      success: function (result) {
+        console.log('Successfully edited')
+
+        window.location.href = `${server}/recipe.html?id=${recipeID}`
+      },
+      failure: function (result) {
+        console.log('Something went wrong')
+      }
+    })    
+  }
+})
 
 // DELETE RECIPE
 $(document).on('click','.btn-delete', function () {
