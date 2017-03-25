@@ -1,7 +1,7 @@
 var recipeID;
 var local = 'http://localhost:8000'
 var heroku = 'https://g-drinks.herokuapp.com'
-var server = local
+var server = heroku
 
 $(document).ready(function () {
   recipeID = getUrlParameter('id')
@@ -30,7 +30,7 @@ $(document).on('click','.btn-submit', function () {
     failure: function (result) {
       console.log('Something went wrong')
     }
-  })    
+  })
 })
 
 // DELETE RECIPE
