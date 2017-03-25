@@ -4,12 +4,17 @@
   width: 100%;
 }
 
-.menu-title {
+.menu-title h1, .menu-title h3 {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   color: #e4a82f;
+  font-family: 'Berkshire Swash', cursive;
+}
+
+.menu-title h3 {
+  color: #ddd;
 }
 
 .recipes-all {
