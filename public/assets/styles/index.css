@@ -53,6 +53,13 @@
   color: #ddd;
   width: 360px;
   padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.div-name-rating h2 {
+  margin-top: 10px;
 }
 
 .drink-shaking {

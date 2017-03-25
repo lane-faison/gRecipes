@@ -17,26 +17,20 @@ $(document).on('click','.btn-submit', function () {
     name: $('#InputDrinkTitle').val(),
     description: $('#InputDrinkDescription').val()
   }
-  if ($('.age-check').prop('checked') == false) {
-    event.preventDefault()
-    alert('You are not old enough to edit a drink recipe. Please come back when you are 21!')
-    return false
-  } else {
-    console.log(updatedRecipe);
-    $.ajax({
-      url: `${server}/recipes/${recipeID}`,
-      type: 'PUT',
-      data: updatedRecipe,
-      success: function (result) {
-        console.log('Successfully edited')
+  console.log(updatedRecipe);
+  $.ajax({
+    url: `${server}/recipes/${recipeID}`,
+    type: 'PUT',
+    data: updatedRecipe,
+    success: function (result) {
+      console.log('Successfully edited')
 
-        window.location.href = `${server}/recipe.html?id=${recipeID}`
-      },
-      failure: function (result) {
-        console.log('Something went wrong')
-      }
-    })    
-  }
+      window.location.href = `${server}/recipe.html?id=${recipeID}`
+    },
+    failure: function (result) {
+      console.log('Something went wrong')
+    }
+  })    
 })
 
 // DELETE RECIPE

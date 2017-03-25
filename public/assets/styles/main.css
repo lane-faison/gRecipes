@@ -61,6 +61,13 @@ img.drinkLogo {
   border: 5px solid #05ff65;
 }
 
+.btn {
+  background: rgba(236, 194, 111, 0.69);
+  font-family: 'Noto Serif', serif;
+  text-shadow: none;
+  color: #000;
+}
+
 /******************** FOOTER ********************/
 
 .navbar-fixed-bottom {

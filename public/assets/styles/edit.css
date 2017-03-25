@@ -44,3 +44,13 @@ main {
   padding: 1px 0;
   border: 6px solid #f33;
 }
+
+.label-checkbox {
+  display: block;
+  text-indent: -15px;
+}
+
+.age-check {
+  vertical-align: bottom;
+  position: relative;
+}
