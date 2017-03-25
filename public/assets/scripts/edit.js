@@ -17,7 +17,6 @@ $(document).on('click','.btn-submit', function () {
     name: $('#InputDrinkTitle').val(),
     description: $('#InputDrinkDescription').val()
   }
-  console.log(updatedRecipe);
   $.ajax({
     url: `${server}/recipes/${recipeID}`,
     type: 'PUT',
@@ -42,7 +41,6 @@ $(document).on('click','.btn-delete', function () {
       url: `${server}/recipes/${recipeID}`,
       type: 'DELETE',
       success: function (result) {
-        console.log('trying to switch pages...')
         window.location.href = 'index.html'
       },
       failure: function (result) {

@@ -9,7 +9,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-family: 'Berkshire Swash', cursive;
   color: #e4a82f;
 }
 
@@ -61,7 +60,6 @@
 
 .div-name-rating h2 {
   margin-top: 10px;
-  font-family: 'Noto Serif', sans-serif;
 }
 
 .drink-shaking {

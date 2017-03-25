@@ -58,7 +58,6 @@ $(document).ready(function () {
         for (var i = 0; i < result.length; i++) {
           for (var k = 0; k < data.length; k++) {
             if (data[k].id == ingNeeded[i]) {
-              console.log(data[k].name)
               $('.recipe-ingredients').append(`<div class='each-ingredient'><button type='button' class='btn-ingredient'><span class="glyphicon glyphicon-plus" aria-hidden="true"></span><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button><p class='one-ingredient'>${data[k].name}</p></div>`)
             }
           }
@@ -69,8 +68,6 @@ $(document).ready(function () {
 
   // DRINK STEPS SECTION
   $.get(`${server}/steps`, function (steps) {
-    // console.log('steps:')
-    // console.log(steps)
     for (let i = 0; i < steps.length; i++) {
       if (steps[i].recipe_id == recipeID) {
         count++
@@ -83,8 +80,6 @@ $(document).ready(function () {
 
   // DRINK REVIEW SECTION
   $.get(`${server}/reviews`, function (reviews) {
-    console.log('reviews:')
-    console.log(reviews)
     var ratingArray = []
 
     for (let i = 0; i < reviews.length; i++) {
@@ -155,11 +150,7 @@ $(document).on('click','.btn-submit-review', function () {
       avatar: userAvatar
     }
 
-    /// TODO: CREATE A USER POST ROUTE THAT RETURNS THE USER_ID SO THAT IT CAN BE USED IN THE POSTING OF THE REVIEW BELOW. THE POSTING OF THE USER SHOULD RETURN THE ID
-
     $.post(`${server}/users`, userInfo, function (result) {
-      console.log('made it through to the post');
-      console.log(result[0])
       return result
     }).then( result => {
       var newReview = {
@@ -168,10 +159,7 @@ $(document).on('click','.btn-submit-review', function () {
         user_id: result[0],
         recipe_id: recipeID
       }
-      console.log(newReview)
       $.post(`${server}/reviews`, newReview, function (result) {
-        console.log(result)
-        console.log('success my dude!')
         location.reload()
       })
     })

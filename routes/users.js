@@ -33,7 +33,6 @@ router.post('/', (req,res) => {
   User().where('name',req.body.username).select()
   .then ( result => {
     if(result.length === 0) {
-      console.log('User does not exist...creating!');
       return User().insert({
         name: req.body.username,
         avatar: req.body.avatar
@@ -43,9 +42,6 @@ router.post('/', (req,res) => {
       })
     }
     else {
-      console.log('User found! Retrieving information...');
-      // Properly returns the user's pre-existing user ID
-      // TODO: see if you can do res.json([result[0].id]) instead of creating the array
       var idArray =[result[0].id]
       res.json(idArray)
     }

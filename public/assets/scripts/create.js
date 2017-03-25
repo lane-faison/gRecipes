@@ -81,7 +81,6 @@ $(document).on('click','.btn-add-drink', function (event) {
       return $.post(`${server}/recipes`, newRecipe)
     })
     .then((recipeId) => {
-      // recipeId is properly returned as an integer
       var ingPromises = []
       var stepPromises =[]
       for (let j = 0; j < ingredientArray.length; j++) {
@@ -105,7 +104,6 @@ $(document).on('click','.btn-add-drink', function (event) {
             stepArray[m].recipe_id = recipeId
             stepPromises.push($.post(`${server}/steps`, stepArray[m]))
           }
-          console.log('Entire recipe successfully added!');
           return Promise.all(stepPromises)
         })
     })
